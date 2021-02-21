@@ -2481,8 +2481,9 @@ ENDM
     CONFIG WRT=OFF
     CONFIG BOR4V=BOR40V
 
-     ;PSECT udata_bank0 ;common memory
- ;cont: DS 1; 1 byte
+     PSECT udata_bank0 ;common memory
+ cont: DS 2; 1 byte
+ cont_2: DS 1; 1 byte
 
     PSECT resVect, class=CODE, abs, delta=2
     ;------------Vector reset---------------------------------------------------
@@ -2495,6 +2496,28 @@ ENDM
     PSECT code, delta=2,abs
     ORG 100h
 
+    tabla:
+ clrf PCLATH
+ bsf PCLATH, 0 ;pclath= 01, pcl = 02
+ andlw 0x0f
+ addwf PCL ;pc = pclath + pcl + w
+ retlw 00111111B ;0
+ retlw 00000110B ;1
+ retlw 01011011B ;2
+ retlw 01001111B ;3
+ retlw 01100110B ;4
+ retlw 01101101B ;5
+ retlw 01111101B ;6
+ retlw 00000111B ;7
+ retlw 01111111B ;8
+ retlw 01101111B ;9
+ retlw 01110111B ;A
+ retlw 01111100B ;B
+ retlw 00111001B ;c
+ retlw 01011110B ;d
+ retlw 01111001B ;E
+ retlw 01110001B ;F
+
     ;----------------configuracion----------------------------------------------
     main:
  call config_reloj
@@ -2503,13 +2526,19 @@ ENDM
  banksel PORTA
 
     loop:
+ call loop_contador
+ call loop_delay
+ goto loop
+
+    ;----------------sub rutinas TIMER 0---------------------------------------
+
+    loop_contador:
  btfss ((INTCON) and 07Fh), 2
  goto $-1
  call reinicio_tmr0
  incf PORTA ,1
- goto loop
+ return
 
-    ;----------------sub rutinas TIMER 0---------------------------------------
     config_tmr0:
  banksel TRISA
  bcf ((OPTION_REG) and 07Fh), 5 ;reloj interno
@@ -2528,7 +2557,7 @@ ENDM
  return
 
     config_reloj:
- banksel OSCCON ;ircf=010 250kHz
+ banksel OSCCON ;500kHz
  bcf OSCCON,6
  bsf OSCCON,5
  bsf OSCCON,4
@@ -2546,6 +2575,40 @@ ENDM
  banksel PORTA ;banco 00
  clrf TRISA
 
+ banksel TRISD
+ clrf TRISD
+ bsf TRISB,0
+ bsf TRISB,1
+
+ banksel PORTD
+ clrf PORTD
+ movlw 0x00
+ movwf cont_2
+ return
+
+    loop_delay:
+ btfsc PORTB, 0
+ call inc_boton
+ btfsc PORTB, 1
+ call decr_boton
+ return
+
+    inc_boton:
+ btfsc PORTB,0
+ goto $-1
+ incf cont_2
+ movf cont_2,W
+ call tabla
+ movwf PORTD
+ return
+
+    decr_boton:
+ btfsc PORTB,1
+ goto $-1
+ decf cont_2
+ movf cont_2,W
+ call tabla
+ movwf PORTD
  return
 
     END
