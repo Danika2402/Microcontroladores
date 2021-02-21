@@ -84,8 +84,8 @@
     ;----------------sub rutinas  TIMER 0---------------------------------------
     
     loop_contador:
-	btfss	    T0IF
-	goto	    $-1
+	btfss	    T0IF	    ;el contador incrementa con cada 500ms
+	goto	    $-1		    ; del timer0
 	call	    reinicio_tmr0
 	incf	    PORTA ,1
 	return
@@ -103,7 +103,7 @@
 
     reinicio_tmr0:
 	movlw	    12
-	movwf	    TMR0
+	movwf	    TMR0	;timer0 500ms
 	bcf	    T0IF
 	return
 
@@ -126,36 +126,36 @@
 	banksel	    PORTA	;banco 00
 	clrf	    TRISA
 	
-	banksel	    TRISD
-	clrf	    TRISD
-	bsf	    TRISB,0 
+	banksel	    TRISD	;puerto b como salida
+	clrf	    TRISD	
+	bsf	    TRISB,0	;puerto b como entrada
 	bsf	    TRISB,1
 	
 	banksel	    PORTD	    
 	clrf	    PORTD
 	movlw	    0x00
-	movwf	    cont_2
+	movwf	    cont_2	;mover variable y solo se usa 4 bits
 	return
 	
     loop_delay:
-	btfsc	PORTB, 0
-	call	inc_boton
+	btfsc	PORTB, 0	;incremento del delay 7
+    	call	inc_boton	    
 	btfsc	PORTB, 1
 	call	decr_boton
 	return
 	
     inc_boton:
-	btfsc	PORTB,0
-	goto	$-1
-	incf	cont_2
-	movf	cont_2,W
+	btfsc	PORTB,0		;cuando se apacha el boton
+	goto	$-1		;la variable se aumenta, guarda y se mueve
+	incf	cont_2		;llamo la tabla y el dato W lo mando al
+	movf	cont_2,W	;puerto D
 	call	tabla
 	movwf	PORTD
 	return
 	
     decr_boton:
-	btfsc	PORTB,1
-	goto	$-1
+	btfsc	PORTB,1	    ;igual que inc_boton pero 
+	goto	$-1	    ;la variable se disminuye 
 	decf	cont_2
 	movf	cont_2,W 
 	call	tabla
