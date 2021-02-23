@@ -33,7 +33,6 @@
     CONFIG BOR4V=BOR40V		// reinicio abajo de 4V, BOR21V=2.1V
     
      PSECT udata_bank0 ;common memory
-	cont:	DS 2; 1 byte
 	cont_2: DS 1; 1 byte
     
     PSECT resVect, class=CODE, abs, delta=2
@@ -79,6 +78,7 @@
     loop:
 	call	    loop_contador
 	call	    loop_delay
+//	call	    igualdad
 	goto	    loop
     
     ;----------------sub rutinas  TIMER 0---------------------------------------
@@ -126,10 +126,13 @@
 	banksel	    PORTA	;banco 00
 	clrf	    TRISA
 	
-	banksel	    TRISD	;puerto b como salida
+	banksel	    TRISD	;puerto d como salida
 	clrf	    TRISD	
 	bsf	    TRISB,0	;puerto b como entrada
-	bsf	    TRISB,1
+	bsf	    TRISB,1 
+	
+//	banksel	    TRISB
+//	bsf	    TRISB,7
 	
 	banksel	    PORTD	    
 	clrf	    PORTD
@@ -161,5 +164,13 @@
 	call	tabla
 	movwf	PORTD
 	return
+	
+ //   igualdad:
+//	movf	cont_2,W
+//	movfw	PORTA
+//	subwf	W, F
+//	goto	$-1
+//	incf	PORTB,7
+//	return
 	
     END

@@ -14,7 +14,7 @@
 $build/default/production/Lab3.o
 resVect CODE 0 0 0 3 2
 code CODE 0 0 0 15F 2
-udata_bank0 BANK0 1 20 20 3 1
+udata_bank0 BANK0 1 20 20 1 1
 config CONFIG 4 2007 2007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -22,11 +22,11 @@ config CONFIG 4 2007 2007 2 2
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 23-6F 1
+RAM 21-6F 1
 RAM A0-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK0 23-6F 1
+BANK0 21-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
@@ -52,40 +52,40 @@ STRING 15F-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $build/default/production/Lab3.o
+0 resVect CODE >40:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 0 resVect CODE >41:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 0 resVect CODE >42:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-0 resVect CODE >43:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-2 resVect CODE >44:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-0 code CODE >48:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+2 resVect CODE >43:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+0 code CODE >47:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+100 code CODE >49:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 100 code CODE >50:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-100 code CODE >51:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-101 code CODE >52:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-102 code CODE >53:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-103 code CODE >54:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-104 code CODE >55:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-105 code CODE >56:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-106 code CODE >57:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-107 code CODE >58:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-108 code CODE >59:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-109 code CODE >60:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-10A code CODE >61:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-10B code CODE >62:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-10C code CODE >63:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-10D code CODE >64:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-10E code CODE >65:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-10F code CODE >66:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-110 code CODE >67:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-111 code CODE >68:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-112 code CODE >69:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-113 code CODE >70:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+101 code CODE >51:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+102 code CODE >52:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+103 code CODE >53:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+104 code CODE >54:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+105 code CODE >55:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+106 code CODE >56:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+107 code CODE >57:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+108 code CODE >58:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+109 code CODE >59:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+10A code CODE >60:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+10B code CODE >61:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+10C code CODE >62:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+10D code CODE >63:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+10E code CODE >64:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+10F code CODE >65:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+110 code CODE >66:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+111 code CODE >67:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+112 code CODE >68:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+113 code CODE >69:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+114 code CODE >72:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 114 code CODE >73:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-114 code CODE >74:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-115 code CODE >75:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-116 code CODE >76:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-117 code CODE >77:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+115 code CODE >74:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+116 code CODE >75:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+117 code CODE >76:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+119 code CODE >78:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 119 code CODE >79:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-119 code CODE >80:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-11A code CODE >81:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+11A code CODE >80:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 11B code CODE >82:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 11C code CODE >86:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 11C code CODE >87:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
@@ -127,33 +127,33 @@ $build/default/production/Lab3.o
 143 code CODE >130:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 144 code CODE >131:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 145 code CODE >132:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-146 code CODE >134:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-148 code CODE >135:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-149 code CODE >136:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-14A code CODE >137:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-14B code CODE >138:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-14C code CODE >140:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-14C code CODE >141:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-14D code CODE >142:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-14E code CODE >143:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-14F code CODE >144:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-150 code CODE >145:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-151 code CODE >147:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-151 code CODE >148:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-152 code CODE >149:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-153 code CODE >150:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-154 code CODE >151:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-155 code CODE >152:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-156 code CODE >153:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-157 code CODE >154:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-158 code CODE >156:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-158 code CODE >157:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-159 code CODE >158:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-15A code CODE >159:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-15B code CODE >160:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-15C code CODE >161:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-15D code CODE >162:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
-15E code CODE >163:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+146 code CODE >137:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+148 code CODE >138:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+149 code CODE >139:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+14A code CODE >140:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+14B code CODE >141:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+14C code CODE >143:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+14C code CODE >144:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+14D code CODE >145:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+14E code CODE >146:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+14F code CODE >147:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+150 code CODE >148:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+151 code CODE >150:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+151 code CODE >151:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+152 code CODE >152:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+153 code CODE >153:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+154 code CODE >154:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+155 code CODE >155:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+156 code CODE >156:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+157 code CODE >157:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+158 code CODE >159:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+158 code CODE >160:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+159 code CODE >161:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+15A code CODE >162:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+15B code CODE >163:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+15C code CODE >164:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+15D code CODE >165:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
+15E code CODE >166:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Lab 3\Laboratorio3.X\Lab3.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -167,7 +167,7 @@ $build/default/production/Lab3.o
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
 __Hspace_0 15F 0 ABS 0 - -
-__Hspace_1 23 0 ABS 0 - -
+__Hspace_1 21 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Hudata_bank0 0 0 ABS 0 udata_bank0 -
@@ -185,7 +185,7 @@ __Hdata 0 0 ABS 0 data -
 __Lcode 0 0 ABS 0 code -
 __Ldata 0 0 ABS 0 data -
 __S0 0 0 ABS 0 - -
-__S1 23 0 ABS 0 - -
+__S1 21 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 __HresVect 0 0 ABS 0 resVect -
 __Lconfig 0 0 CONFIG 4 config -
@@ -223,7 +223,7 @@ __Ludata_shr 0 0 ABS 0 udata_shr -
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-udata_bank0 1 20 20 3 1
+udata_bank0 1 20 20 1 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

@@ -2482,7 +2482,6 @@ ENDM
     CONFIG BOR4V=BOR40V
 
      PSECT udata_bank0 ;common memory
- cont: DS 2; 1 byte
  cont_2: DS 1; 1 byte
 
     PSECT resVect, class=CODE, abs, delta=2
@@ -2528,6 +2527,7 @@ ENDM
     loop:
  call loop_contador
  call loop_delay
+
  goto loop
 
     ;----------------sub rutinas TIMER 0---------------------------------------
@@ -2575,10 +2575,13 @@ ENDM
  banksel PORTA ;banco 00
  clrf TRISA
 
- banksel TRISD ;puerto b como salida
+ banksel TRISD ;puerto d como salida
  clrf TRISD
  bsf TRISB,0 ;puerto b como entrada
  bsf TRISB,1
+
+
+
 
  banksel PORTD
  clrf PORTD
@@ -2610,5 +2613,5 @@ ENDM
  call tabla
  movwf PORTD
  return
-
+# 176 "Lab3.s"
     END
