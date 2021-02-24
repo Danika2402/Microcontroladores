@@ -38,7 +38,7 @@ PROCESSOR 16F887
     DOWN    EQU 1
     
     PSECT udata_bank0 ;common memory
-	cont:		DS 2; 2 byte
+	cont:		DS 1; 1 byte
     
     PSECT udata_bank0	;common memory
 	W_TEMP:		DS 1
@@ -50,8 +50,11 @@ PROCESSOR 16F887
     resetVec:
 	PAGESEL main
 	goto main
-    
+	
+    PSECT intVect, class=CODE, abs, delta = 2
 ;------------Vector interruptor-------------------------------------------------
+ ORG 04h
+
     push:
 	movwf	    W_TEMP
 	swapf	    STATUS, W
@@ -59,7 +62,8 @@ PROCESSOR 16F887
 	
     isr:
 	btfsc	    RBIF
-	call	    int_iocb	
+	call	    int_iocb
+	
 	
     pop:
 	swapf	    STATUS_TEMP, W
@@ -69,15 +73,39 @@ PROCESSOR 16F887
 	retfie
 ;---------subrutina interrupcion------------------------------------------------
     int_iocb:
-	banksel	    PORTB
-	btfSS	    PORTB, UP
+	banksel	    PORTA
+	btfss	    PORTB, UP
 	incf	    PORTA
 	btfss	    PORTB, DOWN
 	decf	    PORTA
 	bcf	    RBIF
+	return
 	
-    PSECT code, delta=2,abs
-	ORG 100h
+PSECT code, delta=2,abs
+    ORG 100h
+    
+tabla:
+	clrf	    PCLATH
+	bsf	    PCLATH, 0	;pclath= 01, pcl = 02
+	andlw	    0x0f
+	addwf	    PCL		;pc = pclath + pcl + w
+	retlw	    00111111B	;0
+	retlw	    00000110B	;1
+	retlw	    01011011B	;2
+	retlw	    01001111B	;3
+	retlw	    01100110B	;4
+	retlw	    01101101B	;5
+	retlw	    01111101B	;6
+	retlw	    00000111B	;7
+	retlw	    01111111B	;8
+	retlw	    01101111B	;9
+	retlw	    01110111B	;A
+	retlw	    01111100B	;B
+	retlw	    00111001B	;c
+	retlw	    01011110B	;d
+	retlw	    01111001B	;E
+	retlw	    01110001B	;F
+	
 ;----------------configuracion--------------------------------------------------
     main:
 	call	config_io
@@ -86,6 +114,12 @@ PROCESSOR 16F887
 	call	config_int_enable
 	banksel	PORTA
 	
+    loop:
+	movf	PORTA,W
+	call	tabla
+	movwf	PORTC
+	goto loop
+    
 ;--------sub rutinas------------------------------------------------------------
     config_iocrb:	
 	banksel	    TRISA
@@ -100,12 +134,13 @@ PROCESSOR 16F887
     config_io:
 	bsf	STATUS, 5   ;banco11
 	bsf	STATUS, 6
-	clrf	 ANSEL
+	clrf	ANSEL
 	clrf	ANSELH	    ;pines digitales
 	
 	bsf	STATUS, 5   ;banco 01
 	bcf	STATUS, 6
 	clrf	TRISA	    ;porta salida
+	clrf	TRISC
 	bsf	TRISB, UP   ;entrada
 	bsf	TRISB, DOWN ;entrada
 	
@@ -115,7 +150,9 @@ PROCESSOR 16F887
 	
 	bcf	STATUS, 5   ;banco 00
 	bcf	STATUS, 6
-	clrf	PORTA	    
+	clrf	PORTA	
+	clrf	PORTC
+	
 	return
 	
     config_reloj:
