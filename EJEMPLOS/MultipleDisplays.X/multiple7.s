@@ -5,8 +5,8 @@
 ; Carnet: 19487
 ; Compilador: pic-as (v2.30), MPLABX v5.45
     
-; Programa: interrupciones IOCB y TIMER0 con contadores 7 bits
-; Hardware: contador 7 bits en PORTA y PORTD, display7 en PORTC
+; Programa: 
+; Hardware: 
 
 ; Creado: 23 de feb, 2021
 ;Ultima modificacion:  123 feb, 2021
@@ -37,7 +37,9 @@ PROCESSOR 16F887
     UP	    EQU 0
     DOWN    EQU 1
     
-    PSECT udata_bank0	;common memory
+    
+    
+    PSECT udata_shr	;common memory
 	W_TEMP:		DS 1
 	STATUS_TEMP:	DS 1
     
@@ -68,8 +70,10 @@ PROCESSOR 16F887
 	swapf	    W_TEMP, F
 	swapf	    W_TEMP, W
 	retfie
+
 ;---------subrutina interrupcion------------------------------------------------
-    int_iocb:
+	
+int_iocb:
 	banksel	    PORTA	    ;si el puertob UP se activa
 	btfss	    PORTB, UP	    ;incrementa el porta
 	incf	    PORTA
@@ -81,28 +85,6 @@ PROCESSOR 16F887
 PSECT code, delta=2,abs
     ORG 100h
     
-tabla:
-	clrf	    PCLATH
-	bsf	    PCLATH, 0	;pclath= 01, pcl = 02
-	andlw	    0x0f
-	addwf	    PCL		;pc = pclath + pcl + w
-	retlw	    00111111B	;0
-	retlw	    00000110B	;1
-	retlw	    01011011B	;2
-	retlw	    01001111B	;3
-	retlw	    01100110B	;4
-	retlw	    01101101B	;5
-	retlw	    01111101B	;6
-	retlw	    00000111B	;7
-	retlw	    01111111B	;8
-	retlw	    01101111B	;9
-	retlw	    01110111B	;A
-	retlw	    01111100B	;B
-	retlw	    00111001B	;c
-	retlw	    01011110B	;d
-	retlw	    01111001B	;E
-	retlw	    01110001B	;F
-	
 ;----------------configuracion--------------------------------------------------
     main:
 	call	config_io
@@ -112,13 +94,11 @@ tabla:
 	banksel	PORTA
 	
     loop:
-	movf	PORTA,W
-	call	tabla		;loop del display 7
-	movwf	PORTC		;mueve el puerto A al puerto C
+    
 	goto loop
     
 ;--------sub rutinas------------------------------------------------------------
-    config_iocrb:	
+    config_iocrb:
 	banksel	    TRISA
 	bsf	    IOCB, UP
 	bsf	    IOCB, DOWN	
@@ -137,8 +117,6 @@ tabla:
 	bsf	STATUS, 5   ;banco 01
 	bcf	STATUS, 6
 	clrf	TRISA	    ;porta salida
-	clrf	TRISC	    ;portc salida
-	clrf	TRISD	    ;portd salida
 	bsf	TRISB, UP   ;entrada
 	bsf	TRISB, DOWN ;entrada
 	
@@ -149,23 +127,4 @@ tabla:
 	bcf	STATUS, 5   ;banco 00
 	bcf	STATUS, 6
 	clrf	PORTA	
-	clrf	PORTC
-	clrf	PORTD
-	
 	return
-	
-    config_reloj:
-	banksel	OSCCON
-	bsf	IRCF2	
-	bsf	IRCF1
-	bcf	IRCF0		
-	bsf	SCS	    ;reloj interno a 4M Hz
-	return
-	
-    config_int_enable:
-	bsf	GIE	    ;intcon
-	bsf	RBIE
-	bcf	RBIF
-	return
-	
-END
