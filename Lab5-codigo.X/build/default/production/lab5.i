@@ -1,18 +1,18 @@
-# 1 "lab4_codigo.s"
+# 1 "lab5.s"
 # 1 "<built-in>" 1
-# 1 "lab4_codigo.s" 2
+# 1 "lab5.s" 2
 ;*******************************************************************************
-; Archivo: Lab4_codigo.s
+; Archivo: Lab5.s
 ; Dispositivo: PIC16F887
 ; Autor: Danika Andrino
 ; Carnet: 19487
 ; Compilador: pic-as (v2.30), MPLABX v5.45
 
-; Programa: interrupciones IOCB y TIMER0 con contadores 7 bits
-; Hardware: contador 7 bits en PORTA y PORTD, display7 en PORTC
+; Programa:
+; Hardware:
 
-; Creado: 23 de feb, 2021
-;Ultima modificacion: 23 feb, 2021
+; Creado: 3 de mar, 2021
+;Ultima modificacion: 3 mar, 2021
 
 
 ;*******************************************************************************
@@ -2464,7 +2464,7 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 7 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\xc.inc" 2 3
-# 19 "lab4_codigo.s" 2
+# 19 "lab5.s" 2
 
     ; Configuration word 1
     CONFIG FOSC=INTRC_NOCLKOUT
@@ -2483,23 +2483,35 @@ ENDM
     CONFIG WRT=OFF
     CONFIG BOR4V=BOR40V
 
-    UP EQU 0
-    DOWN EQU 1
+    PSECT udata_bank0
+ var: DS 1
+ ban: DS 1
+ nibble: DS 2
+ display_var: DS 2
 
-    PSECT udata_bank0 ;common memory
+    PSECT udata_shr
  W_TEMP: DS 1
  STATUS_TEMP: DS 1
 
-    PSECT resVect, class=CODE, abs, delta =2
- ;------------Vector reset------------------------------------------------------
-    ORG 00h
-    resetVec:
+    restart_tmr0 macro
+ banksel PORTA
+ movlw 61
+ movwf TMR0
+ bcf ((INTCON) and 07Fh), 2
+ endm
+
+;------------Vector reset-------------------------------------------------------
+
+    PSECT resVect, class=CODE, abs, delta=2
+ ORG 00h
+    resectVect:
  PAGESEL main
  goto main
 
-    PSECT intVect, class=CODE, abs, delta = 2
 ;------------Vector interruptor-------------------------------------------------
- ORG 04h
+
+    PSECT inVect, class=CODE, abs, delta=2
+    ORG 04h
 
     push:
  movwf W_TEMP
@@ -2507,9 +2519,8 @@ ENDM
  movwf STATUS_TEMP
 
     isr:
- btfsc ((INTCON) and 07Fh), 0
- call int_iocb
-
+ btfsc ((INTCON) and 07Fh), 2
+ call int_t0
 
     pop:
  swapf STATUS_TEMP, W
@@ -2517,104 +2528,127 @@ ENDM
  swapf W_TEMP, F
  swapf W_TEMP, W
  retfie
+
 ;---------subrutina interrupcion------------------------------------------------
-    int_iocb:
- banksel PORTA ;si el puertob UP se activa
- btfss PORTB, UP ;incrementa el porta
- incf PORTA
- btfss PORTB, DOWN ;si el puertob DOWN se activa
- decf PORTA ;decrementa el porta
- bcf ((INTCON) and 07Fh), 0
+
+    int_t0:
+ restart_tmr0
+ clrf PORTD
+ btfsc ban, 0
+ goto display_1
+ ;goto display_0
+    display_0:
+ movf display_var, W
+ movwf PORTC
+ bsf PORTD, 0
+ goto siguiente_display
+
+    display_1:
+ movf display_var + 1, W
+ movwf PORTC
+ bsf PORTD, 1
+
+    siguiente_display:
+ movlw 1
+ xorwf ban, F
  return
 
-PSECT code, delta=2,abs
-    ORG 100h
+;---------Codigo principal------------------------------------------------------
 
-tabla:
- clrf PCLATH
- bsf PCLATH, 0 ;pclath= 01, pcl = 02
- andlw 0x0f
- addwf PCL ;pc = pclath + pcl + w
- retlw 00111111B ;0
- retlw 00000110B ;1
- retlw 01011011B ;2
- retlw 01001111B ;3
- retlw 01100110B ;4
- retlw 01101101B ;5
- retlw 01111101B ;6
- retlw 00000111B ;7
- retlw 01111111B ;8
- retlw 01101111B ;9
- retlw 01110111B ;A
- retlw 01111100B ;B
- retlw 00111001B ;c
- retlw 01011110B ;d
- retlw 01111001B ;E
- retlw 01110001B ;F
+PSECT code, delta=2, abs
+ORG 100h
+
+ tabla:
+     clrf PCLATH
+     bsf PCLATH, 0 ;pclath= 01, pcl = 02
+     andlw 0x0f
+     addwf PCL ;pc = pclath + pcl + w
+     retlw 00111111B ;0
+     retlw 00000110B ;1
+     retlw 01011011B ;2
+     retlw 01001111B ;3
+     retlw 01100110B ;4
+     retlw 01101101B ;5
+     retlw 01111101B ;6
+     retlw 00000111B ;7
+     retlw 01111111B ;8
+     retlw 01101111B ;9
+     retlw 01110111B ;A
+     retlw 01111100B ;B
+     retlw 00111001B ;c
+     retlw 01011110B ;d
+     retlw 01111001B ;E
+     retlw 01110001B ;F
 
 ;----------------configuracion--------------------------------------------------
+
     main:
  call config_io
  call config_reloj
- call config_iocrb
- call config_int_enable
+ call config_tmr0
  banksel PORTA
-
     loop:
- movf PORTA,W
- call tabla ;loop del display 7
- movwf PORTC ;mueve el puerto A al puerto C
+ movlw 0x24
+ movwf var
+ call separar_nibble
+ call prep_diplays
  goto loop
 
 ;--------sub rutinas------------------------------------------------------------
-    config_iocrb:
- banksel TRISA
- bsf IOCB, UP
- bsf IOCB, DOWN
+    separar_nibble:
+ movf var, W
+ andlw 0x0f
+ movwf nibble
+ swapf var,W
+ andlw 0x0f
+ movwf nibble + 1
+ return
 
- banksel PORTA
- movf PORTB, W ;termina condicion mismatch al leer
- bcf ((INTCON) and 07Fh), 0
+    prep_diplays:
+ movf nibble,W
+ call tabla
+ movwf display_var
+
+ movf nibble + 1,W
+ call tabla
+ movwf display_var + 1
  return
 
     config_io:
- bsf STATUS, 5 ;banco11
- bsf STATUS, 6
+ banksel ANSEL
  clrf ANSEL
- clrf ANSELH ;pines digitales
+ clrf ANSELH
 
- bsf STATUS, 5 ;banco 01
- bcf STATUS, 6
- clrf TRISA ;porta salida
- clrf TRISC ;portc salida
- clrf TRISD ;portd salida
- bsf TRISB, UP ;entrada
- bsf TRISB, DOWN ;entrada
+ banksel TRISA
+ clrf TRISC
+ bcf TRISD, 0
+ bcf TRISD, 1
 
- bcf OPTION_REG, 7 ;habilitar pull ups
- bsf WPUB, UP
- bsf WPUB, DOWN
-
- bcf STATUS, 5 ;banco 00
- bcf STATUS, 6
- clrf PORTA
- clrf PORTC
+ banksel PORTA
+ clrf TRISC
  clrf PORTD
-
  return
 
     config_reloj:
  banksel OSCCON
- bsf ((OSCCON) and 07Fh), 6
+ bcf ((OSCCON) and 07Fh), 6
  bsf ((OSCCON) and 07Fh), 5
  bcf ((OSCCON) and 07Fh), 4
- bsf ((OSCCON) and 07Fh), 0 ;reloj interno a 4M Hz
+ bsf ((OSCCON) and 07Fh), 0
  return
 
-    config_int_enable:
+    config_tmr0:
+ banksel TRISA
+ bcf ((OPTION_REG) and 07Fh), 5
+ bcf ((OPTION_REG) and 07Fh), 3
+ bsf ((OPTION_REG) and 07Fh), 2
+ bsf ((OPTION_REG) and 07Fh), 1
+ bsf ((OPTION_REG) and 07Fh), 0
+ restart_tmr0
+
  bsf ((INTCON) and 07Fh), 7 ;intcon
- bsf ((INTCON) and 07Fh), 3
- bcf ((INTCON) and 07Fh), 0
+ bsf ((INTCON) and 07Fh), 5 ;config int enable
+ bcf ((INTCON) and 07Fh), 2
  return
 
 END

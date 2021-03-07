@@ -32,8 +32,6 @@
     CONFIG WRT=OFF		// proteccion de autoescritura desactivada
     CONFIG BOR4V=BOR40V		// reinicio abajo de 4V, BOR21V=2.1V
     
-    
-    
      PSECT udata_bank0 ;common memory
 	
 	cont:		DS 2

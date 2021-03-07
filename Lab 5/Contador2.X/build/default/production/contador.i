@@ -1,18 +1,18 @@
-# 1 "lab4_codigo.s"
+# 1 "contador.s"
 # 1 "<built-in>" 1
-# 1 "lab4_codigo.s" 2
+# 1 "contador.s" 2
 ;*******************************************************************************
-; Archivo: Lab4_codigo.s
+; Archivo: contador.s
 ; Dispositivo: PIC16F887
 ; Autor: Danika Andrino
 ; Carnet: 19487
 ; Compilador: pic-as (v2.30), MPLABX v5.45
 
-; Programa: interrupciones IOCB y TIMER0 con contadores 7 bits
-; Hardware: contador 7 bits en PORTA y PORTD, display7 en PORTC
+; Programa:
+; Hardware:
 
-; Creado: 23 de feb, 2021
-;Ultima modificacion: 23 feb, 2021
+; Creado: 3 de mar, 2021
+;Ultima modificacion: 3 mar, 2021
 
 
 ;*******************************************************************************
@@ -2464,7 +2464,7 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 7 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\xc.inc" 2 3
-# 19 "lab4_codigo.s" 2
+# 19 "contador.s" 2
 
     ; Configuration word 1
     CONFIG FOSC=INTRC_NOCLKOUT
@@ -2486,20 +2486,42 @@ ENDM
     UP EQU 0
     DOWN EQU 1
 
-    PSECT udata_bank0 ;common memory
+    PSECT udata_bank0
+ cont_2: DS 1
+ var: DS 1
+ ban: DS 1
+ nibble: DS 2
+ display_var1: DS 1
+ display_var2: DS 1
+
+    PSECT udata_bank0
+ cont: DS 1
+ cont_big: DS 1
+ cont_small: DS 1
+
+    PSECT udata_shr
  W_TEMP: DS 1
  STATUS_TEMP: DS 1
 
-    PSECT resVect, class=CODE, abs, delta =2
- ;------------Vector reset------------------------------------------------------
-    ORG 00h
-    resetVec:
+    restart_tmr0 macro
+ banksel PORTA
+ movlw 61
+ movwf TMR0
+ bcf ((INTCON) and 07Fh), 2
+ endm
+
+;------------Vector reset-------------------------------------------------------
+
+    PSECT resVect, class=CODE, abs, delta=2
+ ORG 00h
+    resectVect:
  PAGESEL main
  goto main
 
-    PSECT intVect, class=CODE, abs, delta = 2
 ;------------Vector interruptor-------------------------------------------------
- ORG 04h
+
+    PSECT inVect, class=CODE, abs, delta=2
+    ORG 04h
 
     push:
  movwf W_TEMP
@@ -2509,7 +2531,8 @@ ENDM
     isr:
  btfsc ((INTCON) and 07Fh), 0
  call int_iocb
-
+ btfsc ((INTCON) and 07Fh), 2
+ call int_t0
 
     pop:
  swapf STATUS_TEMP, W
@@ -2517,6 +2540,7 @@ ENDM
  swapf W_TEMP, F
  swapf W_TEMP, W
  retfie
+
 ;---------subrutina interrupcion------------------------------------------------
     int_iocb:
  banksel PORTA ;si el puertob UP se activa
@@ -2527,46 +2551,114 @@ ENDM
  bcf ((INTCON) and 07Fh), 0
  return
 
-PSECT code, delta=2,abs
-    ORG 100h
+    int_t0:
+ restart_tmr0
 
-tabla:
- clrf PCLATH
- bsf PCLATH, 0 ;pclath= 01, pcl = 02
- andlw 0x0f
- addwf PCL ;pc = pclath + pcl + w
- retlw 00111111B ;0
- retlw 00000110B ;1
- retlw 01011011B ;2
- retlw 01001111B ;3
- retlw 01100110B ;4
- retlw 01101101B ;5
- retlw 01111101B ;6
- retlw 00000111B ;7
- retlw 01111111B ;8
- retlw 01101111B ;9
- retlw 01110111B ;A
- retlw 01111100B ;B
- retlw 00111001B ;c
- retlw 01011110B ;d
- retlw 01111001B ;E
- retlw 01110001B ;F
+ btfsc ban, 0
+ goto display_1
+
+    display_0:
+ movf display_var2, W
+ movwf PORTC
+ bsf PORTD, 1
+ goto siguiente_display
+
+    display_1:
+ movf display_var1, W
+ movwf PORTC
+ bsf PORTD, 0
+ goto siguiente_display
+
+    siguiente_display:
+ movlw 1
+ xorwf ban, F
+ return
+
+;---------Codigo principal------------------------------------------------------
+
+PSECT code, delta=2,abs
+ORG 100h
+
+    tabla:
+     clrf PCLATH
+     bsf PCLATH, 0 ;pclath= 01, pcl = 02
+     andlw 0x0f
+     addwf PCL ;pc = pclath + pcl + w
+     retlw 00111111B ;0
+     retlw 00000110B ;1
+     retlw 01011011B ;2
+     retlw 01001111B ;3
+     retlw 01100110B ;4
+     retlw 01101101B ;5
+     retlw 01111101B ;6
+     retlw 00000111B ;7
+     retlw 01111111B ;8
+     retlw 01101111B ;9
+     retlw 01110111B ;A
+     retlw 01111100B ;B
+     retlw 00111001B ;c
+     retlw 01011110B ;d
+     retlw 01111001B ;E
+     retlw 01110001B ;F
 
 ;----------------configuracion--------------------------------------------------
+
     main:
  call config_io
  call config_reloj
  call config_iocrb
- call config_int_enable
+ call config_tmr0
  banksel PORTA
 
     loop:
- movf PORTA,W
- call tabla ;loop del display 7
- movwf PORTC ;mueve el puerto A al puerto C
+ movlw PORTA
+ movwf var
+ call separar_nibble
+ call prep_diplays
+ btfsc PORTB, 0 ;incremento del delay 7
+     call inc_boton
+ btfsc PORTB, 1
+ call decr_boton
  goto loop
 
 ;--------sub rutinas------------------------------------------------------------
+    separar_nibble:
+
+ movf var, W
+ andlw 0x0f
+ movwf nibble
+ swapf var,W
+ andlw 0x0f
+ movwf nibble + 1
+ return
+
+    prep_diplays:
+ movf nibble,W
+ call tabla
+ movwf display_var1
+
+ movf nibble + 1,W
+ call tabla
+ movwf display_var2
+
+ return
+
+    config_tmr0:
+ banksel TRISA
+ bcf ((OPTION_REG) and 07Fh), 5 ;reloj interno
+ bcf ((OPTION_REG) and 07Fh), 3
+ bsf ((OPTION_REG) and 07Fh), 2
+ bsf ((OPTION_REG) and 07Fh), 1
+ bcf ((OPTION_REG) and 07Fh), 0 ; PS=111 = 1:256
+ banksel PORTA
+ restart_tmr0
+
+ bsf ((INTCON) and 07Fh), 7 ;intcon
+ bsf ((INTCON) and 07Fh), 5 ;config int enable
+ bcf ((INTCON) and 07Fh), 2
+
+ return
+
     config_iocrb:
  banksel TRISA
  bsf IOCB, UP
@@ -2587,9 +2679,10 @@ tabla:
  bcf STATUS, 6
  clrf TRISA ;porta salida
  clrf TRISC ;portc salida
- clrf TRISD ;portd salida
  bsf TRISB, UP ;entrada
  bsf TRISB, DOWN ;entrada
+ bcf TRISD, 0
+ bcf TRISD, 1
 
  bcf OPTION_REG, 7 ;habilitar pull ups
  bsf WPUB, UP
@@ -2598,8 +2691,8 @@ tabla:
  bcf STATUS, 5 ;banco 00
  bcf STATUS, 6
  clrf PORTA
- clrf PORTC
  clrf PORTD
+
 
  return
 
@@ -2611,10 +2704,42 @@ tabla:
  bsf ((OSCCON) and 07Fh), 0 ;reloj interno a 4M Hz
  return
 
-    config_int_enable:
- bsf ((INTCON) and 07Fh), 7 ;intcon
- bsf ((INTCON) and 07Fh), 3
- bcf ((INTCON) and 07Fh), 0
+    inc_boton:
+ btfsc PORTB,0 ;cuando se apacha el boton
+ goto $-1 ;la variable se aumenta, guarda y se mueve
+ incf cont_2 ;llamo la tabla y el dato W lo mando al
+ movf cont_2,W ;puerto D
+ movwf var
+ call separar_nibble
+ call prep_diplays
+
+ return
+
+    decr_boton:
+ btfsc PORTB,1 ;igual que inc_boton pero
+ goto $-1 ;la variable se disminuye
+ decf cont_2
+ movf cont_2,W
+ movwf var
+ call separar_nibble
+ call prep_diplays
+
+ return
+
+    delay_big:
+ movlw 197 ;100ms
+ movwf cont_big
+ call delay_small
+ decfsz cont_big, 1
+ goto $-2
+ return
+
+
+    delay_small:
+ movlw 165 ;500us
+ movwf cont_small
+ decfsz cont_small, 1
+ goto $-1
  return
 
 END
