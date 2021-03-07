@@ -5,8 +5,8 @@
 ; Carnet: 19487
 ; Compilador: pic-as (v2.30), MPLABX v5.45
     
-; Programa: 
-; Hardware: 	
+; Programa: Contador de 2 bites con double display
+; Hardware: contador en puerto a y displays en puerto c
 
 ; Creado: 3 de mar, 2021
 ;Ultima modificacion:  3 mar, 2021
