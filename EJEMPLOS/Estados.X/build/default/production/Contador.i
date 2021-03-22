@@ -2482,10 +2482,13 @@ ENDM
     cont: DS 2 ;1 byte
     estado: DS 1
 
-    BMODO EQU 0
-    B2 EQU 1
-    LS0 EQU 0
-    LS1 EQU 1
+    BMODO EQU 4
+    BARRIBA EQU 5
+    BABAJO EQU 6
+
+    LS0 EQU 1
+    LS1 EQU 2
+    LS2 EQU 3
 
  PSECT udata_shr
     STATUS_TEMP: DS 1
@@ -2513,28 +2516,46 @@ siempre_isr:
     btfss estado, 0
     goto estado_0_int
     goto estado_1_int
+    goto estado_2_int
 
 estado_0_int:
-    btfss PORTB, B2 ; acción en el modo
+    btfss PORTB, BARRIBA ; acción en el modo
     incf PORTA
+    btfss PORTB, BABAJO
+    clrf PORTA
+
     btfss PORTB, BMODO ; cambio de modo
     bsf estado, 0
     bcf ((INTCON) and 07Fh), 0 ; reinicio de interrupcion
     goto pop
 
 estado_1_int:
-    btfss PORTB, B2 ; acción en el modo
+    btfss PORTB, BARRIBA ; acción en el modo
+    clrf PORTA
+    btfss PORTB, BABAJO
     decf PORTA
+
     btfss PORTB, BMODO ; cambio de modo
     bcf estado, 0
     bcf ((INTCON) and 07Fh), 0 ; reinicio de interrupcion
     goto pop
 
+estado_2_int:
+    btfss PORTB, BARRIBA ; acción en el modo
+    clrf PORTA
+    btfss PORTB, BABAJO
+    incf PORTA
+
+    btfss PORTB, BMODO
+    bsf estado, 0
+    bcf ((INTCON) and 07Fh), 0 ; reinicio de interrupcion
+    goto pop
+
 pop:
-    swapf STATUS_TEMP,W ;Swap STATUS_TEMP register into W
-    movwf STATUS ;Move W into STATUS register
-    swapf W_TEMP,F ;Swap W_TEMP
-    swapf W_TEMP,W ;Swap W_TEMP into W
+    swapf STATUS_TEMP,W
+    movwf STATUS
+    swapf W_TEMP,F
+    swapf W_TEMP,W
     retfie
 
 
@@ -2555,22 +2576,32 @@ pop:
     btfss estado, 0 ;revisión de estado
     goto estado_0
     goto estado_1
+    goto estado_2
 
- estado_0:
-    bsf PORTC, LS0
-    bcf PORTC, LS1
+estado_0:
+    bsf PORTB, LS0 ;1
+    bcf PORTB, LS1 ;0
+    bcf PORTB, LS2 ;0
+
     goto loop
 
- estado_1:
-    bcf PORTC, LS0
-    bsf PORTC, LS1
+estado_1:
+    bcf PORTB, LS0 ;0
+    bsf PORTB, LS1 ;1
+    bcf PORTB, LS2 ;0
     goto loop ; loop forever
 
+estado_2:
+    bcf PORTB, LS0 ;0
+    bcf PORTB, LS1 ;0
+    bsf PORTB, LS2 ;1
+    goto loop
  ;------------sub rutinas------------
  config_rbioc:
     banksel TRISA
     bsf IOCB, BMODO ; interupt en ((PORTB) and 07Fh), 7, iocb para pines individuales
-    bsf IOCB, B2
+    bsf IOCB, BARRIBA
+    bsf IOCB, BABAJO
 
     banksel PORTB
     movf PORTB, W
@@ -2586,13 +2617,19 @@ pop:
 
     banksel TRISA
     clrf TRISA ; port A como salida
+
     bsf TRISB, BMODO
-    bsf TRISB, B2
-    bcf TRISC, LS0
-    bcf TRISC, LS1
+    bsf TRISB, BARRIBA
+    bsf TRISB, BABAJO
+
+    bcf TRISB, LS0
+    bcf TRISB, LS1
+    bcf TRISB, LS2
+
     bcf OPTION_REG, 7 ;RBPU
     bsf WPUB, BMODO
-    bsf WPUB, B2
+    bsf WPUB, BARRIBA
+    bsf WPUB, BABAJO
 
     banksel PORTA
     clrf PORTA
