@@ -1,13 +1,14 @@
-; Archivo:	Estados.s
+
+ ; Archivo:	Estados.s
  ; Dispositivo:	PIC16F887
- ; Autor:	JosÃ© Morales
+ ; Autor:	José Morales
  ; Compilador:	pic-as (v2.30), MPLABX V5.45
  ;                
  ; Programa:	1 boton de cambio de estado. S0 = incrementar, S1 = decrementar
  ; Hardware:	LEDs en el puerto A, botones en RB0 y RB1, leds en RC1 y RC2
  ;                       
  ; Creado: 10 feb, 2021
- ; Ãšltima modificaciÃ³n: 10 feb, 2021
+ ; Última modificación: 10 feb, 2021
  
  PROCESSOR 16F887
  #include <xc.inc>
@@ -17,30 +18,26 @@
   CONFIG WDTE=OFF   // WDT disabled (reinicio repetitivo del pic)
   CONFIG PWRTE=ON   // PWRT enabled  (espera de 72ms al iniciar)
   CONFIG MCLRE=OFF  // El pin de MCLR se utiliza como I/O
-  CONFIG CP=OFF	    // Sin protecciÃ³n de cÃ³digo
-  CONFIG CPD=OFF    // Sin protecciÃ³n de datos
+  CONFIG CP=OFF	    // Sin protección de código
+  CONFIG CPD=OFF    // Sin protección de datos
   
-  CONFIG BOREN=OFF  // Sin reinicio cuÃ¡ndo el voltaje de alimentaciÃ³n baja de 4V
+  CONFIG BOREN=OFF  // Sin reinicio cuándo el voltaje de alimentación baja de 4V
   CONFIG IESO=OFF   // Reinicio sin cambio de reloj de interno a externo
   CONFIG FCMEN=OFF  // Cambio de reloj externo a interno en caso de fallo
-  CONFIG LVP=ON     // programaciÃ³n en bajo voltaje permitida
+  CONFIG LVP=ON     // programación en bajo voltaje permitida
  
  ;configuration word 2
-  CONFIG WRT=OFF    // ProtecciÃ³n de autoescritura por el programa desactivada
+  CONFIG WRT=OFF    // Protección de autoescritura por el programa desactivada
   CONFIG BOR4V=BOR40V // Reinicio abajo de 4V, (BOR21V=2.1V)
 
  PSECT udata_bank0 ;common memory
     cont:	DS  2 ;1 byte
-    estado:	DS  1
+    estado:	DS 1
     
-    BMODO    EQU 4
-    BARRIBA  EQU 5
-    BABAJO   EQU 6
-	    
-	    
-    LS0	    EQU 1
-    LS1	    EQU 2
-    LS2	    EQU 3
+    BMODO   EQU 0
+    B2	    EQU 1
+    LS0	    EQU 0
+    LS1	    EQU 1
 	    
  PSECT udata_shr
     STATUS_TEMP: DS 1
@@ -48,7 +45,7 @@
     
  PSECT resVect, class=CODE, abs, delta=2
  ;--------------vector reset------------------
- ORG 00h	;posiciÃ³n 0000h para el reset
+ ORG 00h	;posición 0000h para el reset
  resetVec:
      PAGESEL main
      goto main
@@ -57,9 +54,9 @@
  PSECT	intVect, class=CODE, abs, delta=2
  ORG	04h
 push:
-    movwf	W_TEMP 
-    swapf	STATUS,W 
-    movwf	STATUS_TEMP 
+    movwf	W_TEMP ;Copy W to TEMP register
+    swapf	STATUS,W ;Swap status to be saved into W
+    movwf	STATUS_TEMP ;Save status to bank zero STATUS_TEMP register
 
 isr:
 siempre_isr:
@@ -68,74 +65,34 @@ siempre_isr:
     btfss   estado, 0
     goto    estado_0_int
     goto    estado_1_int
-    goto    estado_2_int
     
 estado_0_int:   
-    btfss   PORTB, BARRIBA	    ; acciÃ³n en el modo
+    btfss   PORTB, B2	    ; acción en el modo
     incf    PORTA
-    btfss   PORTB, BABAJO
-    clrf    PORTA
-    
     btfss   PORTB, BMODO    ; cambio de modo
     bsf	    estado, 0	    
     bcf	    RBIF	    ; reinicio de interrupcion
     goto    pop
     
 estado_1_int:  
-    btfss   PORTB, BARRIBA	    ; acciÃ³n en el modo
+    btfss   PORTB, B2	    ; acción en el modo
     clrf    PORTA
-    btfss   PORTB, BABAJO
-    decf    PORTA
-    
     btfss   PORTB, BMODO    ; cambio de modo
     bcf	    estado, 0	    
     bcf	    RBIF	    ; reinicio de interrupcion
     goto    pop  
 
-estado_2_int:
-    btfss   PORTB, BARRIBA	    ; acciÃ³n en el modo
-    clrf    PORTA
-    btfss   PORTB, BABAJO
-    incf    PORTA
-    
-    btfss   PORTB, BMODO
-    bsf	    estado, 0	    
-    bcf	    RBIF	    ; reinicio de interrupcion
-    goto    pop
-    
 pop:
-    swapf	STATUS_TEMP,W 
-    movwf	STATUS 
-    swapf	W_TEMP,F 
-    swapf	W_TEMP,W 
+    swapf	STATUS_TEMP,W ;Swap STATUS_TEMP register into W
+    movwf	STATUS ;Move W into STATUS register
+    swapf	W_TEMP,F ;Swap W_TEMP
+    swapf	W_TEMP,W ;Swap W_TEMP into W
     retfie
     
-    
-tabla:
-	clrf	    PCLATH
-	bsf	    PCLATH, 0	;pclath= 01, pcl = 02
-	andlw	    0x0f
-	addwf	    PCL		;pc = pclath + pcl + w
-	retlw	    00111111B	;0
-	retlw	    00000110B	;1
-	retlw	    01011011B	;2
-	retlw	    01001111B	;3
-	retlw	    01100110B	;4
-	retlw	    01101101B	;5
-	retlw	    01111101B	;6
-	retlw	    00000111B	;7
-	retlw	    01111111B	;8
-	retlw	    01101111B	;9
-	retlw	    01110111B	;A
-	retlw	    01111100B	;B
-	retlw	    00111001B	;c
-	retlw	    01011110B	;d
-	retlw	    01111001B	;E
-	retlw	    01110001B	;F
 
  PSECT code, delta=2, abs
- ORG 100h	; posiciÃ³n para el cÃ³digo
- ;-------------configuraciÃ³n------------------
+ ORG 100h	; posición para el código
+ ;-------------configuración------------------
  main:
     call    config_io
     call    config_reloj
@@ -144,37 +101,28 @@ tabla:
 ;------------loop principal---------          
  loop:
     
-siempre:
+ siempre:
     call    delay_small	;independiente de estado
     
-    btfss   estado, 0	;revisiÃ³n de estado
+    btfss   estado, 0	;revisión de estado
     goto    estado_0
     goto    estado_1
     
-estado_0:
-    bsf	    PORTB, LS0	;1
-    bcf	    PORTB, LS1	;0
-    bcf	    PORTB, LS2	;0
-    
+ estado_0:
+    bsf	    PORTC, LS0
+    bcf	    PORTC, LS1
     goto    loop   
     
-estado_1:   
-    bcf	    PORTB, LS0	;0
-    bsf	    PORTB, LS1	;1
-    bcf	    PORTB, LS2	;0
+ estado_1:   
+    bcf	    PORTC, LS0
+    bsf	    PORTC, LS1
     goto    loop        ; loop forever
 
-estado_2:
-    bcf	    PORTB, LS0	;0
-    bcf	    PORTB, LS1	;0
-    bsf	    PORTB, LS2	;1
-    goto    loop
  ;------------sub rutinas------------ 
  config_rbioc:
     banksel TRISA
     bsf	    IOCB, BMODO	; interupt en RB7, iocb para pines individuales
-    bsf	    IOCB, BARRIBA
-    bsf	    IOCB, BABAJO
+    bsf	    IOCB, B2
     
     banksel PORTB
     movf    PORTB, W
@@ -190,19 +138,13 @@ estado_2:
     
     banksel TRISA
     clrf    TRISA	; port A como salida
-    
     bsf	    TRISB, BMODO
-    bsf	    TRISB, BARRIBA
-    bsf	    TRISB, BABAJO
-    
-    bcf	    TRISB, LS0
-    bcf	    TRISB, LS1
-    bcf	    TRISB, LS2
-    
+    bsf	    TRISB, B2
+    bcf	    TRISC, LS0
+    bcf	    TRISC, LS1
     bcf	    OPTION_REG, 7 ;RBPU
     bsf	    WPUB, BMODO
-    bsf	    WPUB, BARRIBA
-    bsf	    WPUB, BABAJO
+    bsf	    WPUB, B2
     
     banksel PORTA
     clrf    PORTA
@@ -210,9 +152,9 @@ estado_2:
     
  config_reloj:
     banksel OSCCON
-    bsf	    IRCF2	; OSCCON, 6 , 1; 1MHz
-    bcf	    IRCF1	; OSCCON, 5 , 0
-    bcf	    IRCF0	; OSCCON, 4 , 0
+    bsf	    IRCF2	; OSCCON, 6 ; 1MHz
+    bcf	    IRCF1	; OSCCON, 5
+    bcf	    IRCF0	; OSCCON, 4
     bsf	    SCS		; reloj interno
     return
     
@@ -220,7 +162,7 @@ estado_2:
     movlw   150		    ; valor inicial del contador
     movwf   cont	    
     decfsz  cont, 1	    ; decrementar el contador
-    goto    $-1		    ; ejecutar lÃ­nea anterior
+    goto    $-1		    ; ejecutar línea anterior
     return
     
 END 
