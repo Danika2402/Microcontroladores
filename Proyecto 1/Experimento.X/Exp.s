@@ -66,7 +66,9 @@ siempre_isr:
     goto    pop
     btfss   estado, 0
     goto    estado_0_int
+    btfss   estado, 0
     goto    estado_1_int
+    btfss   estado, 0
     goto    estado_2_int
     
 estado_0_int:   

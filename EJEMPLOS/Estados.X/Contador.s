@@ -64,9 +64,12 @@ isr:
 siempre_isr:
     btfss   RBIF
     goto    pop
-    btfss   estado, 0
+    
+    btfss   estado, 0	
     goto    estado_0_int
+    btfss   estado, 0
     goto    estado_1_int
+    btfss   estado, 0
     goto    estado_2_int
     
 estado_0_int:   
