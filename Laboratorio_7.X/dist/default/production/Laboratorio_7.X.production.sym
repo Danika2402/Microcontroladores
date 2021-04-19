@@ -28,15 +28,14 @@ btemp 7E 0 ABS 0
 start 12 0 CODE 0
 _TRISA 85 0 ABS 0
 _TRISB 86 0 ABS 0
+_TRISC 87 0 ABS 0
 _PORTA 5 0 ABS 0
 reset_vec 0 0 CODE 0
 _TRISD 88 0 ABS 0
 _PORTB 6 0 ABS 0
-_TRISE 89 0 ABS 0
 _PORTC 7 0 ABS 0
 _ANSEL 188 0 ABS 0
 _PORTD 8 0 ABS 0
-_PORTE 9 0 ABS 0
 wtemp0 7E 0 ABS 0
 interrupt_function 4 0 CODE 0
 __Hconfig 2009 0 CONFIG 4
@@ -177,13 +176,13 @@ cstackBANK0 20 32 BANK0 20 1
 strings 382 39F STRING 382 0
 %locals
 dist/default/production\Laboratorio_7.X.production.o
-C:\Users\Pavilion\AppData\Local\Temp\sjjo.s
-532 15 0 CODE 0
-535 15 0 CODE 0
-546 15 0 CODE 0
+C:\Users\Pavilion\AppData\Local\Temp\slts.s
+530 15 0 CODE 0
+533 15 0 CODE 0
+544 15 0 CODE 0
+550 16 0 CODE 0
 552 16 0 CODE 0
-554 16 0 CODE 0
-555 17 0 CODE 0
+553 17 0 CODE 0
 Codigo_C.c
 95 83 0 CODE 0
 96 83 0 CODE 0

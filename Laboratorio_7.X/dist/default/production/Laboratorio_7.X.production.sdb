@@ -33,8 +33,6 @@
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
-"414
-[v _PORTE PORTE `VEuc  1 e 1 @9 ]
 [s S29 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
@@ -52,7 +50,7 @@
 ]
 [u S43 . 1 `S29 1 . 1 0 `S38 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES43  1 e 1 @11 ]
-[s S77 . 1 `uc 1 PS 1 0 :3:0 
+[s S76 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -60,34 +58,34 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "1366
-[s S84 . 1 `uc 1 PS0 1 0 :1:0 
+[s S83 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S88 . 1 `S77 1 . 1 0 `S84 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES88  1 e 1 @129 ]
+[u S87 . 1 `S76 1 . 1 0 `S83 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES87  1 e 1 @129 ]
 "1416
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
 "1478
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1540
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
 "1602
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
-"1664
-[v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S105 . 1 `uc 1 SCS 1 0 :1:0 
+[s S104 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S111 . 1 `uc 1 . 1 0 :4:0 
+[s S110 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S116 . 1 `S105 1 . 1 0 `S111 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES116  1 e 1 @143 ]
+[u S115 . 1 `S104 1 . 1 0 `S110 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES115  1 e 1 @143 ]
 "2346
 [v _WPUB WPUB `VEuc  1 e 1 @149 ]
 "2416

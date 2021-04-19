@@ -71,12 +71,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1602
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"1664
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1664: extern volatile unsigned char TRISE __attribute__((address(0x089)));
-[v _TRISE `Vuc ~T0 @X0 0 e@137 ]
-"414
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 414: extern volatile unsigned char PORTE __attribute__((address(0x009)));
-[v _PORTE `Vuc ~T0 @X0 0 e@9 ]
+"1540
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1540: extern volatile unsigned char TRISC __attribute__((address(0x087)));
+[v _TRISC `Vuc ~T0 @X0 0 e@135 ]
 "1352
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1352:     struct {
 [s S50 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -130,7 +127,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "22
 [p x IESO        =  OFF ]
 "23
-[p x FCMEN      =  OFF ]
+[p x FCMEN      =  ON ]
 "24
 [p x LVP          =  ON ]
 "26
@@ -419,7 +416,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Codigo_C.c: 61:             RB7 = 1;
 [e = _RB7 -> -> 1 `i `b ]
 "62
-[; ;Codigo_C.c: 62:             PORTC = (tabla[c]);
+[; ;Codigo_C.c: 62:             PORTC = tabla[c];
 [e = _PORTC -> *U + &U _tabla * -> _c `ux -> -> # *U &U _tabla `ui `ux `uc ]
 "63
 [; ;Codigo_C.c: 63:         }
@@ -434,7 +431,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Codigo_C.c: 65:             RB6 = 1;
 [e = _RB6 -> -> 1 `i `b ]
 "66
-[; ;Codigo_C.c: 66:             PORTC = (tabla[d]);
+[; ;Codigo_C.c: 66:             PORTC = tabla[d];
 [e = _PORTC -> *U + &U _tabla * -> _d `ux -> -> # *U &U _tabla `ui `ux `uc ]
 "67
 [; ;Codigo_C.c: 67:         }
@@ -449,7 +446,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Codigo_C.c: 69:             RB5 =1;
 [e = _RB5 -> -> 1 `i `b ]
 "70
-[; ;Codigo_C.c: 70:             PORTC =(tabla[u]);
+[; ;Codigo_C.c: 70:             PORTC =tabla[u];
 [e = _PORTC -> *U + &U _tabla * -> _u `ux -> -> # *U &U _tabla `ui `ux `uc ]
 "71
 [; ;Codigo_C.c: 71:         }
@@ -573,8 +570,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Codigo_C.c: 116:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
 "117
-[; ;Codigo_C.c: 117:     TRISE = 0x00;
-[e = _TRISE -> -> 0 `i `uc ]
+[; ;Codigo_C.c: 117:     TRISC = 0x00;
+[e = _TRISC -> -> 0 `i `uc ]
 "119
 [; ;Codigo_C.c: 119:     PORTB = 0x00;
 [e = _PORTB -> -> 0 `i `uc ]
@@ -585,8 +582,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Codigo_C.c: 121:     PORTD = 0x00;
 [e = _PORTD -> -> 0 `i `uc ]
 "122
-[; ;Codigo_C.c: 122:     PORTE = 0x00;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;Codigo_C.c: 122:     PORTC = 0x00;
+[e = _PORTC -> -> 0 `i `uc ]
 "124
 [; ;Codigo_C.c: 124:     OPTION_REGbits.nRBPU=0;
 [e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]

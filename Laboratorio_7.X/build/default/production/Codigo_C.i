@@ -16,7 +16,7 @@
 #pragma config CPD = OFF
 #pragma config BOREN = OFF
 #pragma config IESO = OFF
-#pragma config FCMEN = OFF
+#pragma config FCMEN = ON
 #pragma config LVP = ON
 
 #pragma config BOR4V = BOR40V
@@ -2671,15 +2671,15 @@ void __attribute__((picinterrupt(("")))) isr (void){
         if (i==4){
 
             RB7 = 1;
-            PORTC = (tabla[c]);
+            PORTC = tabla[c];
         }
         else if(i==3){
             RB6 = 1;
-            PORTC = (tabla[d]);
+            PORTC = tabla[d];
         }
         else if(i==2){
             RB5 =1;
-            PORTC =(tabla[u]);
+            PORTC =tabla[u];
         }
 
         i--;
@@ -2726,12 +2726,12 @@ void setup (void){
     TRISA = 0x00;
     TRISB = 0x03;
     TRISD = 0x00;
-    TRISE = 0x00;
+    TRISC = 0x00;
 
     PORTB = 0x00;
     PORTA = 0x00;
     PORTD = 0x00;
-    PORTE = 0x00;
+    PORTC = 0x00;
 
     OPTION_REGbits.nRBPU=0;
     IOCB=0x03;
