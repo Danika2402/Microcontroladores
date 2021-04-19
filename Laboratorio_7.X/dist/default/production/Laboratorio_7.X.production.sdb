@@ -17,11 +17,11 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"52 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio_7.X\Codigo_C.c
+"54 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio_7.X\Codigo_C.c
 [v _isr isr `II(v  1 e 1 0 ]
-"95
+"97
 [v _main main `(v  1 e 1 0 ]
-"109
+"111
 [v _setup setup `(v  1 e 1 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
@@ -108,22 +108,22 @@
 [v _RBIF RBIF `VEb  1 e 0 @88 ]
 "4322
 [v _T0IF T0IF `VEb  1 e 0 @90 ]
-"37 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio_7.X\Codigo_C.c
+"39 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio_7.X\Codigo_C.c
 [v _u u `uc  1 e 1 0 ]
 [v _d d `uc  1 e 1 0 ]
 [v _c c `uc  1 e 1 0 ]
 [v _i i `uc  1 e 1 0 ]
-"39
+"41
 [v _tabla tabla `DC[9]uc  1 e 9 0 ]
-"95
+"97
 [v _main main `(v  1 e 1 0 ]
 {
-"107
-} 0
 "109
+} 0
+"111
 [v _setup setup `(v  1 e 1 0 ]
 {
-"157
+"159
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -161,8 +161,8 @@
 [v ___awdiv@dividend dividend `i  1 p 2 8 ]
 "41
 } 0
-"52 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio_7.X\Codigo_C.c
+"54 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio_7.X\Codigo_C.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"92
+"94
 } 0

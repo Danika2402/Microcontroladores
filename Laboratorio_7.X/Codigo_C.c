@@ -9,6 +9,8 @@
  *Incrementar y decrementar un contadro con 2 botones
  * 
  *Que el contador incremente y decremente con tmr0 cada 5ms 
+ * 
+ * 3 displays 7 muestren el numero del contador
  */
 //******************************************************************************
 
