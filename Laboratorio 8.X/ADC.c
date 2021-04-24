@@ -54,13 +54,15 @@ void __interrupt() isr (void){
         
         if (ADCON0bits.CHS  == 12){
             PORTA   = ADRESH;
-            __delay_us(50);
+            
             ADCON0bits.CHS  = 10;
+            __delay_us(50);
             
         } else if (ADCON0bits.CHS  == 10){
             
             p   = ADRESH;
             ADCON0bits.CHS  = 12;
+            __delay_us(50);
         }
         
         PIR1bits.ADIF    =0;       
@@ -100,10 +102,10 @@ void main(void) {
         
     while(1){
             
-            PORTA = p;
-            c   = PORTA/100;
-            d   = (PORTA -(c * 100))/10;
-            u   = PORTA - (c * 100) - (d *10);
+            
+            c   = p/100;
+            d   = (p -(c * 100))/10;
+            u   = p - (c * 100) - (d *10);
         
             ADCON0bits.GO_nDONE =1;
             __delay_us(50);
