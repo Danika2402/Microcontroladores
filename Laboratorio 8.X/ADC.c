@@ -115,8 +115,8 @@ void main(void) {
     
 
 void setup (void){
-    ANSEL   = 1;
-    ANSELH  = 0xff;
+    ANSEL   = 0x00;
+    ANSELH  = 0b001010;
     
     TRISA   = 0x00;
     TRISC   = 0x00;
