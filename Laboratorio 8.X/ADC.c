@@ -60,13 +60,14 @@ void __interrupt() isr (void){
             
         } else if (ADCON0bits.CHS  == 10){
             
-            p   = ADRESH;
+            PORTC   = ADRESH;
             ADCON0bits.CHS  = 12;
             __delay_us(50);
         }
         
         PIR1bits.ADIF    =0;       
     }
+    
     if (T0IF){
         PORTD   =0;
         
@@ -142,6 +143,10 @@ void setup (void){
     OPTION_REGbits.PS0 =1;
     TMR0 = value; 
     
+    //configuracion de interrupciones
+    INTCONbits.T0IF = 0;
+    INTCONbits.T0IE = 1;
+    INTCONbits.GIE  = 1;
      
     ADCON0bits.CHS0 = 0;
     ADCON0bits.CHS1 = 0;
