@@ -1,16 +1,12 @@
 /*
- * File:   Codigo_C.c
+ * File:   ADC.c
  * Author: Danika
  *
- * Created on 13 de abril de 2021, 02:38 PM
+ * Created on 20 de abril de 2021, 06:56 PM
  */
 //******************************************************************************
 /*
- *Incrementar y decrementar un contadro con 2 botones
- * 
- *Que el contador incremente y decremente con tmr0 cada 5ms 
- * 
- * 3 displays 7 muestren el numero del contador
+ *
  */
 //******************************************************************************
 
@@ -28,15 +24,17 @@
 #pragma config  BOR4V   = BOR40V
 #pragma config  WRT     = OFF
 
+
 #include <xc.h>
 #include <stdint.h>
 
 #define value 236
 
-void setup(void);
-    
+#define _XTAL_FREQ  4000000
 
-char u, d, c, i, f;
+void setup(void);
+
+char u, d, c, i, p;
 
 const char tabla[]={
         0x3f,
@@ -50,25 +48,37 @@ const char tabla[]={
         0x7f
 };
 
-
 void __interrupt() isr (void){
     
-    
-    if (T0IF==1){
-        PORTD++; 
-        PORTB =0;
-                
+    if(PIR1bits.ADIF){
+        
+        if (ADCON0bits.CHS  == 12){
+            PORTA   = ADRESH;
+            __delay_us(50);
+            ADCON0bits.CHS  = 10;
+            
+        } else if (ADCON0bits.CHS  == 10){
+            
+            p   = ADRESH;
+            ADCON0bits.CHS  = 12;
+        }
+        
+        PIR1bits.ADIF    =0;       
+    }
+    if (T0IF){
+        PORTD   =0;
+        
         if (i==4){
                         
-            RB7     = 1;
+            RD0     = 1;
             PORTC   = tabla[c];
         }        
         else if(i==3){
-            RB6     = 1;
+            RD1     = 1;
             PORTC   = tabla[d];
         }
         else if(i==2){
-            RB5     =1;
+            RD2     =1;
             PORTC   =tabla[u];
         }
         
@@ -78,54 +88,43 @@ void __interrupt() isr (void){
         }
         
         INTCONbits.T0IF = 0;
-        TMR0= value;            //5ms
-    } 
-    
-    if (RBIF==1){
-        
-        if (RB0==0){
-            PORTA++;
-        }
-        if (RB1==0){
-            PORTA--;
-        }
-        INTCONbits.RBIF=0;
+        TMR0= value;        //5ms
     }
 }
-
 
 void main(void) {
     setup();
     
-    
-    while(1){
+    __delay_us(50);
+    ADCON0bits.GO_nDONE =1;
         
-        c   = PORTA/100;
-        d   = (PORTA -(c * 100))/10;
-        u   = PORTA - (c * 100) - (d *10);
+    while(1){
+            
+            PORTA = p;
+            c   = PORTA/100;
+            d   = (PORTA -(c * 100))/10;
+            u   = PORTA - (c * 100) - (d *10);
+        
+            ADCON0bits.GO_nDONE =1;
+            __delay_us(50);
         
     }
-    
 }
+    
 
 void setup (void){
- 
-    ANSEL   = 0x00;
-    ANSELH  = 0x00;
+    ANSEL   = 1;
+    ANSELH  = 0xff;
     
     TRISA   = 0x00;
+    TRISC   = 0x00;
     TRISB   = 0x03;
     TRISD   = 0x00;
-    TRISC   = 0x00;
     
-    PORTB   = 0x00;
-    PORTA   = 0x00;
-    PORTD   = 0x00;
-    PORTC   = 0x00;
-    
-    OPTION_REGbits.nRBPU=0;
-    IOCB=0x03;
-    WPUB=0x03;
+    PORTA   = 0;
+    PORTB   = 0;
+    PORTC   = 0;
+    PORTD   = 0;
     
     //oscilador a 4M Hz
     OSCCONbits.IRCF2 =1;
@@ -133,7 +132,7 @@ void setup (void){
     OSCCONbits.IRCF0 =0;
     OSCCONbits.SCS   =1;
     
-    //*configuracion de timer0, prescaler 1:256
+    //configuracion de timer0, prescaler 1:256
     OPTION_REGbits.T0CS =0;
     OPTION_REGbits.PSA =0;
     OPTION_REGbits.PS2 =1;
@@ -141,19 +140,34 @@ void setup (void){
     OPTION_REGbits.PS0 =1;
     TMR0 = value; 
     
-    //configuracion de interrupciones
-    INTCONbits.T0IF =0;
-    INTCONbits.T0IE =1;
+     
+    ADCON0bits.CHS0 = 0;
+    ADCON0bits.CHS1 = 0;
+    ADCON0bits.CHS2 = 1;
+    ADCON0bits.CHS3 = 1;    //canal 12
     
-    //interrupciones portb
-    INTCONbits.RBIF =1;
-    INTCONbits.RBIE=1;
-    INTCONbits.GIE=1;
+    
+    ADCON0bits.ADON = 1;
+    __delay_us(50);
+    
+    ADCON1bits.VCFG0 = 0;
+    ADCON1bits.VCFG1 = 0;
+    
+    ADCON0bits.ADCS0 = 1;
+    ADCON0bits.ADCS1 = 1;
+    
+    INTCONbits.GIE  = 1;
+    INTCONbits.PEIE  =1;
+    
+    PIR1bits.ADIF   = 0;
+    PIE1bits.ADIE   = 1;
+    
+    ADCON1bits.ADFM =0; //izquierda
     
     i   = 4;
     u   = 0;
     d   = 0;
     c   = 0;
-    return;
     
+    return;
 }
