@@ -60,7 +60,7 @@ void __interrupt() isr (void){
             
         } else if (ADCON0bits.CHS  == 10){
             
-            PORTC   = ADRESH;
+            p   = ADRESH;
             ADCON0bits.CHS  = 12;
             __delay_us(50);
         }
@@ -117,7 +117,7 @@ void main(void) {
 
 void setup (void){
     ANSEL   = 0x00;
-    ANSELH  = 0b001010;
+    ANSELH  = 0b00010100;
     
     TRISA   = 0x00;
     TRISC   = 0x00;
@@ -146,7 +146,6 @@ void setup (void){
     //configuracion de interrupciones
     INTCONbits.T0IF = 0;
     INTCONbits.T0IE = 1;
-    INTCONbits.GIE  = 1;
      
     ADCON0bits.CHS0 = 0;
     ADCON0bits.CHS1 = 0;
