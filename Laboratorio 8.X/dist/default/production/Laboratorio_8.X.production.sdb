@@ -3,11 +3,11 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"51 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
+"52 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
 [v _isr isr `II(v  1 e 1 0 ]
-"98
+"99
 [v _main main `(v  1 e 1 0 ]
-"118
+"119
 [v _setup setup `(v  1 e 1 0 ]
 "5 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -30,7 +30,7 @@
 [v _i i `uc  1 e 1 0 ]
 [v _p p `uc  1 e 1 0 ]
 "39
-[v _tabla tabla `DC[9]uc  1 e 9 0 ]
+[v _tabla tabla `DC[10]uc  1 e 10 0 ]
 "59 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [v _TMR0 TMR0 `VEuc  1 e 1 @1 ]
 "166
@@ -162,15 +162,15 @@
 [v _RD2 RD2 `VEb  1 e 0 @66 ]
 "4322
 [v _T0IF T0IF `VEb  1 e 0 @90 ]
-"98 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
+"99 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
 [v _main main `(v  1 e 1 0 ]
 {
-"115
+"116
 } 0
-"118
+"119
 [v _setup setup `(v  1 e 1 0 ]
 {
-"179
+"180
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -208,8 +208,8 @@
 [v ___awdiv@dividend dividend `i  1 p 2 8 ]
 "41
 } 0
-"51 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
+"52 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"96
+"97
 } 0

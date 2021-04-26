@@ -2651,6 +2651,7 @@ void setup(void);
 char u, d, c, i, p;
 
 const char tabla[]={
+        0x7e,
         0x3f,
         0x06,
         0x5b,
@@ -2769,6 +2770,7 @@ void setup (void){
 
     ADCON0bits.ADON = 1;
     _delay((unsigned long)((50)*(4000000/4000000.0)));
+    ADCON0bits.GO_nDONE = 1;
 
     ADCON1bits.VCFG0 = 0;
     ADCON1bits.VCFG1 = 0;
@@ -2789,5 +2791,4 @@ void setup (void){
     d = 0;
     c = 0;
 
-    return;
 }
