@@ -25,7 +25,7 @@ intentry CODE 0 4 4 E 2
 strings STRING 0 207 207 10 2
 bssCOMMON COMMON 1 70 70 5 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\Pavilion\AppData\Local\Temp\slho.o
+$C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 12 12 3 2
 config CONFIG 4 2007 2007 2 2
@@ -75,16 +75,16 @@ STRING 217-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Laboratorio_8.X.production.o
-15 cinit CODE >517:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-15 cinit CODE >520:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-15 cinit CODE >543:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-16 cinit CODE >544:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-17 cinit CODE >545:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-18 cinit CODE >546:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-19 cinit CODE >547:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-1A cinit CODE >553:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-1A cinit CODE >555:C:\Users\Pavilion\AppData\Local\Temp\slho.s
-1B cinit CODE >556:C:\Users\Pavilion\AppData\Local\Temp\slho.s
+15 cinit CODE >517:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+15 cinit CODE >520:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+15 cinit CODE >543:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+16 cinit CODE >544:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+17 cinit CODE >545:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+18 cinit CODE >546:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+19 cinit CODE >547:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+1A cinit CODE >553:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+1A cinit CODE >555:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
+1B cinit CODE >556:C:\Users\Pavilion\AppData\Local\Temp\sjqk.s
 4 intentry CODE >52:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
 1E text5 CODE >52:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
 1E text5 CODE >54:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 8.X\ADC.c
@@ -239,22 +239,22 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
 _T0IF 5A 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 _TMR0 1 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\slho.o
+___sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
 _main 138 0 CODE 0 maintext dist/default/production\Laboratorio_8.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
-start 24 0 CODE 0 init C:\Users\Pavilion\AppData\Local\Temp\slho.o
+start 24 0 CODE 0 init C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 ?___wmul 20 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_8.X.production.o
 _OPTION_REGbits 81 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\slho.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\slho.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\slho.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\slho.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\slho.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\slho.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 ___bmul@multiplicand 20 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_8.X.production.o
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
@@ -272,12 +272,12 @@ __Lmaintext 0 0 ABS 0 maintext -
 ___bmul@multiplier 23 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_8.X.production.o
 ___awdiv@divisor 26 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_8.X.production.o
 __end_of___awdiv 2FC 0 CODE 0 text4 dist/default/production\Laboratorio_8.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\slho.o
-___stacklo 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\slho.o
+___stackhi 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
+___stacklo 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 start_initialization 2A 0 CODE 0 cinit dist/default/production\Laboratorio_8.X.production.o
 __pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\Laboratorio_8.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\slho.o
+___int_sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -327,7 +327,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 __end_of_isr 138 0 CODE 0 text5 dist/default/production\Laboratorio_8.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 40E 0 STRING 0 strings dist/default/production\Laboratorio_8.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Pavilion\AppData\Local\Temp\slho.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Pavilion\AppData\Local\Temp\sjqk.o
 __size_of___bmul 0 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 __size_of___wmul 0 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Laboratorio_8.X.production.o
