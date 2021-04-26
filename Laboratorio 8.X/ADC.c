@@ -5,8 +5,8 @@
  * Created on 20 de abril de 2021, 06:56 PM
  */
 //******************************************************************************
-/*
- *
+/*Uso de potenciometros, leds y displays
+ *Se usa leds y dsiplay 7 para medir el valor de 2 potenciometros con ADC
  */
 //******************************************************************************
 
