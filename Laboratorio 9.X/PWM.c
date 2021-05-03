@@ -37,7 +37,7 @@ void setup(void);
 
 void __interrupt() isr(void){
     
-    if(PIR1bits.ADIF){//PWM diferente 
+    if(PIR1bits.ADIF){ 
         
         if(i == 2){
             PORTB   = ADRESH;                    //Aqui se activa CCP1
@@ -56,7 +56,7 @@ void __interrupt() isr(void){
         i--;                                    //Con la variable i realizamos
         if (i == 0){                            //realizamos un loop donde
             i = 2;                              //cada uno es dedicado a un
-        }
+        }                                       //PWM diferente
         PIR1bits.ADIF = 0;      //se baja la bandera
     }
 }
