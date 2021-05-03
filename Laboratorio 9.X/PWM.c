@@ -5,8 +5,8 @@
  * Created on 27 de abril de 2021, 04:41 PM
  */
 //******************************************************************************
-/*Uso de 2 potenciometros y potenciometros
- * Se usa el ADC junto con el PWM para controlar 2 potenciometros 
+/*Uso de 2 potenciometros y servos
+ * Se usa el ADC junto con el PWM para controlar 2 servos
  * con 2 potenciometros
  */
 //******************************************************************************

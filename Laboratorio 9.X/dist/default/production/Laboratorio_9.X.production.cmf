@@ -20,7 +20,7 @@ cstackCOMMON COMMON 1 70 70 6 1
 intentry CODE 0 4 4 8 2
 bssCOMMON COMMON 1 76 76 1 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
+$C:\Users\Pavilion\AppData\Local\Temp\sc80.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -70,12 +70,12 @@ STRING 112-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Laboratorio_9.X.production.o
-F cinit CODE >482:C:\Users\Pavilion\AppData\Local\Temp\sfa4.s
-F cinit CODE >485:C:\Users\Pavilion\AppData\Local\Temp\sfa4.s
-F cinit CODE >496:C:\Users\Pavilion\AppData\Local\Temp\sfa4.s
-10 cinit CODE >502:C:\Users\Pavilion\AppData\Local\Temp\sfa4.s
-10 cinit CODE >504:C:\Users\Pavilion\AppData\Local\Temp\sfa4.s
-11 cinit CODE >505:C:\Users\Pavilion\AppData\Local\Temp\sfa4.s
+F cinit CODE >482:C:\Users\Pavilion\AppData\Local\Temp\sc80.s
+F cinit CODE >485:C:\Users\Pavilion\AppData\Local\Temp\sc80.s
+F cinit CODE >496:C:\Users\Pavilion\AppData\Local\Temp\sc80.s
+10 cinit CODE >502:C:\Users\Pavilion\AppData\Local\Temp\sc80.s
+10 cinit CODE >504:C:\Users\Pavilion\AppData\Local\Temp\sc80.s
+11 cinit CODE >505:C:\Users\Pavilion\AppData\Local\Temp\sc80.s
 4 intentry CODE >38:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 9.X\PWM.c
 14 text2 CODE >38:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 9.X\PWM.c
 14 text2 CODE >40:C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 9.X\PWM.c
@@ -172,19 +172,19 @@ __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
+___sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\sc80.o
 _main 1C4 0 CODE 0 maintext dist/default/production\Laboratorio_9.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
-start 18 0 CODE 0 init C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
+start 18 0 CODE 0 init C:\Users\Pavilion\AppData\Local\Temp\sc80.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sc80.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sc80.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sc80.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sc80.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sc80.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\Pavilion\AppData\Local\Temp\sc80.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
@@ -196,12 +196,12 @@ _ANSELH 189 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 _CCPR1L 15 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 _CCPR2L 1B 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
-___stacklo 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
+___stackhi 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\sc80.o
+___stacklo 0 0 ABS 0 - C:\Users\Pavilion\AppData\Local\Temp\sc80.o
 __size_of_setup 0 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Laboratorio_9.X.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
+___int_sp 0 0 STACK 2 stack C:\Users\Pavilion\AppData\Local\Temp\sc80.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -246,7 +246,7 @@ _isr 28 0 CODE 0 text2 dist/default/production\Laboratorio_9.X.production.o
 saved_w 7E 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 __end_of_isr 10A 0 CODE 0 text2 dist/default/production\Laboratorio_9.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\Pavilion\AppData\Local\Temp\sfa4.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\Pavilion\AppData\Local\Temp\sc80.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Laboratorio_9.X.production.o
 __pmaintext 1C4 0 CODE 0 maintext dist/default/production\Laboratorio_9.X.production.o
 __Lcommon 0 0 ABS 0 common -
