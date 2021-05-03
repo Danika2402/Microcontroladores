@@ -138,6 +138,7 @@ void setup (void){
     
     //configuracion de timer0, prescaler 1:256
     OPTION_REGbits.T0CS =0;
+    OPTION_REGbits.T0SE =0;
     OPTION_REGbits.PSA =0;
     OPTION_REGbits.PS2 =1;
     OPTION_REGbits.PS1 =1;
