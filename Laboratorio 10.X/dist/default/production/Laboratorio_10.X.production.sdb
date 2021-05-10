@@ -1,0 +1,162 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F887 ]
+[d frameptr 0 ]
+"36 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 10.X\ASCII.c
+[v _main main `(v  1 e 1 0 ]
+"54
+[v _setup setup `(v  1 e 1 0 ]
+"91
+[v _send_char send_char `(v  1 e 1 0 ]
+"98
+[v _str str `(v  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v2.31\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"166 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"290
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+"352
+[v _PORTD PORTD `VEuc  1 e 1 @8 ]
+[s S37 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSPIF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+]
+"553
+[u S45 . 1 `S37 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES45  1 e 1 @12 ]
+[s S171 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"1068
+[s S180 . 1 `uc 1 RCD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 RC9 1 0 :1:6 
+]
+[s S184 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 nRC8 1 0 :1:6 
+]
+[s S187 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 RC8_9 1 0 :1:6 
+]
+[u S190 . 1 `S171 1 . 1 0 `S180 1 . 1 0 `S184 1 . 1 0 `S187 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES190  1 e 1 @24 ]
+"1133
+[v _TXREG TXREG `VEuc  1 e 1 @25 ]
+"1416
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"1540
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+[s S59 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1557
+[u S68 . 1 `S59 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES68  1 e 1 @135 ]
+"1602
+[v _TRISD TRISD `VEuc  1 e 1 @136 ]
+[s S85 . 1 `uc 1 SCS 1 0 :1:0 
+`uc 1 LTS 1 0 :1:1 
+`uc 1 HTS 1 0 :1:2 
+`uc 1 OSTS 1 0 :1:3 
+`uc 1 IRCF 1 0 :3:4 
+]
+"1882
+[s S91 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 IRCF0 1 0 :1:4 
+`uc 1 IRCF1 1 0 :1:5 
+`uc 1 IRCF2 1 0 :1:6 
+]
+[u S96 . 1 `S85 1 . 1 0 `S91 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES96  1 e 1 @143 ]
+[s S111 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"2582
+[s S120 . 1 `uc 1 TXD8 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 nTX8 1 0 :1:6 
+]
+[s S124 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 TX8_9 1 0 :1:6 
+]
+[u S127 . 1 `S111 1 . 1 0 `S120 1 . 1 0 `S124 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES127  1 e 1 @152 ]
+"2642
+[v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
+"2704
+[v _SPBRGH SPBRGH `VEuc  1 e 1 @154 ]
+[s S148 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"3352
+[u S157 . 1 `S148 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES157  1 e 1 @391 ]
+"3387
+[v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
+"3449
+[v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
+"36 C:\Users\Pavilion\OneDrive\Documentos\Microcontroladores\Laboratorio 10.X\ASCII.c
+[v _main main `(v  1 e 1 0 ]
+{
+"52
+} 0
+"98
+[v _str str `(v  1 e 1 0 ]
+{
+[v str@str str `*.24uc  1 a 1 wreg ]
+"99
+[v str@d d `i  1 a 2 1 ]
+"98
+[v str@str str `*.24uc  1 a 1 wreg ]
+[v str@str str `*.24uc  1 a 1 3 ]
+"105
+} 0
+"91
+[v _send_char send_char `(v  1 e 1 0 ]
+{
+[v send_char@i i `uc  1 a 1 wreg ]
+[v send_char@i i `uc  1 a 1 wreg ]
+[v send_char@i i `uc  1 a 1 0 ]
+"95
+} 0
+"54
+[v _setup setup `(v  1 e 1 0 ]
+{
+"89
+} 0
