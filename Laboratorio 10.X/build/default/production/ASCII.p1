@@ -7,8 +7,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\pic.h
 [v __delay `JF1256 ~T0 @X0 0 e ]
 [p i __delay ]
-"32 ASCII.c
-[; ;ASCII.c: 32: void str(char str[]);
+"33 ASCII.c
+[; ;ASCII.c: 33: void str(char *m);
 [v _str `(v ~T0 @X0 0 ef1`*uc ]
 "543 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 543:     struct {
@@ -21,6 +21,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "553
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 553: extern volatile PIR1bits_t PIR1bits __attribute__((address(0x00C)));
 [v _PIR1bits `VS18 ~T0 @X0 0 e@12 ]
+"1140
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1140: extern volatile unsigned char RCREG __attribute__((address(0x01A)));
+[v _RCREG `Vuc ~T0 @X0 0 e@26 ]
+"166
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
+"352
+[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
 "3387
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
 [v _ANSEL `Vuc ~T0 @X0 0 e@392 ]
@@ -47,15 +56,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1602
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1602: extern volatile unsigned char TRISD __attribute__((address(0x088)));
 [v _TRISD `Vuc ~T0 @X0 0 e@136 ]
-"166
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
-[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "290
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 290: extern volatile unsigned char PORTC __attribute__((address(0x007)));
 [v _PORTC `Vuc ~T0 @X0 0 e@7 ]
-"352
-[; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
-[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
 "1868
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1868:     struct {
 [s S70 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 ]
@@ -391,191 +394,266 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
+"35 ASCII.c
+[; ;ASCII.c: 35: char f;
+[v _f `uc ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"36 ASCII.c
-[; ;ASCII.c: 36: void main(void) {
+"38
+[; ;ASCII.c: 38: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"37
-[; ;ASCII.c: 37:     setup();
+"39
+[; ;ASCII.c: 39:     setup();
 [e ( _setup ..  ]
-"40
-[; ;ASCII.c: 40:     while(1){
+"42
+[; ;ASCII.c: 42:     while(1){
 [e :U 140 ]
 {
-"41
-[; ;ASCII.c: 41:         _delay((unsigned long)((500)*(1000000/4000.0)));
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
-"42
-[; ;ASCII.c: 42:         str("¿Que acción desea ejecutar? \r");
-[e ( _str (1 :s 1C ]
 "43
-[; ;ASCII.c: 43:         str("1) Desplegar cadena de caracteres \r");
-[e ( _str (1 :s 2C ]
+[; ;ASCII.c: 43:         _delay((unsigned long)((500)*(1000000/4000.0)));
+[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 1000000 `l `d .4000.0 `ul ]
 "44
-[; ;ASCII.c: 44:         str("2) Cambiar PORTA \r");
-[e ( _str (1 :s 3C ]
+[; ;ASCII.c: 44:         str("¿Que acción desea ejecutar? \r");
+[e ( _str (1 :s 1C ]
 "45
-[; ;ASCII.c: 45:         str("3) Cambiar PORTD \r\r");
-[e ( _str (1 :s 4C ]
+[; ;ASCII.c: 45:         str("1) Desplegar cadena de caracteres \r");
+[e ( _str (1 :s 2C ]
+"46
+[; ;ASCII.c: 46:         str("2) Cambiar PORTA \r");
+[e ( _str (1 :s 3C ]
 "47
-[; ;ASCII.c: 47:         while(!PIR1bits.RCIF);
+[; ;ASCII.c: 47:         str("3) Cambiar PORTD \r\r");
+[e ( _str (1 :s 4C ]
+"49
+[; ;ASCII.c: 49:         while(!PIR1bits.RCIF);
 [e $U 142  ]
 [e :U 143 ]
 [e :U 142 ]
 [e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 143  ]
 [e :U 144 ]
 "50
-[; ;ASCII.c: 50:         }
+[; ;ASCII.c: 50:         f = RCREG;
+[e = _f -> _RCREG `uc ]
+"52
+[; ;ASCII.c: 52:         switch(f){
+[e $U 146  ]
+{
+"54
+[; ;ASCII.c: 54:             case('1'):
+[e :U 147 ]
+"55
+[; ;ASCII.c: 55:                 str('Hola');
+[e ( _str (1 -> -> 27745 `ui `*uc ]
+"56
+[; ;ASCII.c: 56:                 break;
+[e $U 145  ]
+"58
+[; ;ASCII.c: 58:             case('2'):
+[e :U 148 ]
+"59
+[; ;ASCII.c: 59:                 str('Ingrese un caracter para PORTA');
+[e ( _str (1 -> -> 21569 `ui `*uc ]
+"60
+[; ;ASCII.c: 60:                 while(!PIR1bits.RCIF);
+[e $U 149  ]
+[e :U 150 ]
+[e :U 149 ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 150  ]
+[e :U 151 ]
+"61
+[; ;ASCII.c: 61:                 PORTA = RCREG;
+[e = _PORTA _RCREG ]
+"62
+[; ;ASCII.c: 62:                 str('\r Completado \r');
+[e ( _str (1 -> -> 8205 `ui `*uc ]
+"63
+[; ;ASCII.c: 63:                 break;
+[e $U 145  ]
+"65
+[; ;ASCII.c: 65:             case('3'):
+[e :U 152 ]
+"66
+[; ;ASCII.c: 66:                 str('Ingrese un caracter para PORTD');
+[e ( _str (1 -> -> 21572 `ui `*uc ]
+"67
+[; ;ASCII.c: 67:                 while(!PIR1bits.RCIF);
+[e $U 153  ]
+[e :U 154 ]
+[e :U 153 ]
+[e $ ! != -> . . _PIR1bits 0 5 `i -> 0 `i 154  ]
+[e :U 155 ]
+"68
+[; ;ASCII.c: 68:                 PORTD = RCREG;
+[e = _PORTD _RCREG ]
+"69
+[; ;ASCII.c: 69:                 str('\r Completado \r');
+[e ( _str (1 -> -> 8205 `ui `*uc ]
+"70
+[; ;ASCII.c: 70:                 break;
+[e $U 145  ]
+"71
+[; ;ASCII.c: 71:         }
+}
+[e $U 145  ]
+[e :U 146 ]
+[e [\ -> _f `i , $ -> -> 49 `ui `i 147
+ , $ -> -> 50 `ui `i 148
+ , $ -> -> 51 `ui `i 152
+ 145 ]
+[e :U 145 ]
+"72
+[; ;ASCII.c: 72:         }
 }
 [e :U 139 ]
 [e $U 140  ]
 [e :U 141 ]
-"52
-[; ;ASCII.c: 52: }
+"74
+[; ;ASCII.c: 74: }
 [e :UE 138 ]
 }
-"54
-[; ;ASCII.c: 54: void setup (void){
+"76
+[; ;ASCII.c: 76: void setup (void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"56
-[; ;ASCII.c: 56:     ANSEL = 0x00;
-[e = _ANSEL -> -> 0 `i `uc ]
-"57
-[; ;ASCII.c: 57:     ANSELH = 0x00;
-[e = _ANSELH -> -> 0 `i `uc ]
-"59
-[; ;ASCII.c: 59:     TRISC = 0x00;
-[e = _TRISC -> -> 0 `i `uc ]
-"60
-[; ;ASCII.c: 60:     TRISCbits.TRISC7 = 1;
-[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
-"61
-[; ;ASCII.c: 61:     TRISA = 0x00;
-[e = _TRISA -> -> 0 `i `uc ]
-"62
-[; ;ASCII.c: 62:     TRISD = 0x00;
-[e = _TRISD -> -> 0 `i `uc ]
-"64
-[; ;ASCII.c: 64:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
-"65
-[; ;ASCII.c: 65:     PORTC = 0;
-[e = _PORTC -> -> 0 `i `uc ]
-"66
-[; ;ASCII.c: 66:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
-"69
-[; ;ASCII.c: 69:     OSCCONbits.IRCF2 =1;
-[e = . . _OSCCONbits 1 3 -> -> 1 `i `uc ]
-"70
-[; ;ASCII.c: 70:     OSCCONbits.IRCF1 =0;
-[e = . . _OSCCONbits 1 2 -> -> 0 `i `uc ]
-"71
-[; ;ASCII.c: 71:     OSCCONbits.IRCF0 =0;
-[e = . . _OSCCONbits 1 1 -> -> 0 `i `uc ]
-"72
-[; ;ASCII.c: 72:     OSCCONbits.SCS =1;
-[e = . . _OSCCONbits 0 0 -> -> 1 `i `uc ]
-"75
-[; ;ASCII.c: 75:     TXSTAbits.TX9 = 0;
-[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
-"77
-[; ;ASCII.c: 77:     TXSTAbits.SYNC = 0;
-[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
 "78
-[; ;ASCII.c: 78:     BAUDCTLbits.BRG16 = 1;
-[e = . . _BAUDCTLbits 0 3 -> -> 1 `i `uc ]
+[; ;ASCII.c: 78:     ANSEL = 0x00;
+[e = _ANSEL -> -> 0 `i `uc ]
 "79
-[; ;ASCII.c: 79:     TXSTAbits.BRGH = 1;
-[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+[; ;ASCII.c: 79:     ANSELH = 0x00;
+[e = _ANSELH -> -> 0 `i `uc ]
 "81
-[; ;ASCII.c: 81:     SPBRG = 25;
-[e = _SPBRG -> -> 25 `i `uc ]
+[; ;ASCII.c: 81:     TRISC = 0x00;
+[e = _TRISC -> -> 0 `i `uc ]
 "82
-[; ;ASCII.c: 82:     SPBRGH = 0;
-[e = _SPBRGH -> -> 0 `i `uc ]
+[; ;ASCII.c: 82:     TRISCbits.TRISC7 = 1;
+[e = . . _TRISCbits 0 7 -> -> 1 `i `uc ]
+"83
+[; ;ASCII.c: 83:     TRISA = 0x00;
+[e = _TRISA -> -> 0 `i `uc ]
 "84
-[; ;ASCII.c: 84:     RCSTAbits.SPEN = 1;
-[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
-"85
-[; ;ASCII.c: 85:     RCSTAbits.RX9 = 0;
-[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+[; ;ASCII.c: 84:     TRISD = 0x00;
+[e = _TRISD -> -> 0 `i `uc ]
 "86
-[; ;ASCII.c: 86:     RCSTAbits.CREN = 1;
-[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+[; ;ASCII.c: 86:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
 "87
-[; ;ASCII.c: 87:     TXSTAbits.TXEN = 1;
-[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
-"89
-[; ;ASCII.c: 89: }
-[e :UE 145 ]
-}
+[; ;ASCII.c: 87:     PORTC = 0;
+[e = _PORTC -> -> 0 `i `uc ]
+"88
+[; ;ASCII.c: 88:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "91
-[; ;ASCII.c: 91: void send_char(char i){
+[; ;ASCII.c: 91:     OSCCONbits.IRCF2 =1;
+[e = . . _OSCCONbits 1 3 -> -> 1 `i `uc ]
+"92
+[; ;ASCII.c: 92:     OSCCONbits.IRCF1 =0;
+[e = . . _OSCCONbits 1 2 -> -> 0 `i `uc ]
+"93
+[; ;ASCII.c: 93:     OSCCONbits.IRCF0 =0;
+[e = . . _OSCCONbits 1 1 -> -> 0 `i `uc ]
+"94
+[; ;ASCII.c: 94:     OSCCONbits.SCS =1;
+[e = . . _OSCCONbits 0 0 -> -> 1 `i `uc ]
+"97
+[; ;ASCII.c: 97:     TXSTAbits.TX9 = 0;
+[e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
+"99
+[; ;ASCII.c: 99:     TXSTAbits.SYNC = 0;
+[e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
+"100
+[; ;ASCII.c: 100:     BAUDCTLbits.BRG16 = 1;
+[e = . . _BAUDCTLbits 0 3 -> -> 1 `i `uc ]
+"101
+[; ;ASCII.c: 101:     TXSTAbits.BRGH = 1;
+[e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
+"103
+[; ;ASCII.c: 103:     SPBRG = 25;
+[e = _SPBRG -> -> 25 `i `uc ]
+"104
+[; ;ASCII.c: 104:     SPBRGH = 0;
+[e = _SPBRGH -> -> 0 `i `uc ]
+"106
+[; ;ASCII.c: 106:     RCSTAbits.SPEN = 1;
+[e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
+"107
+[; ;ASCII.c: 107:     RCSTAbits.RX9 = 0;
+[e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
+"108
+[; ;ASCII.c: 108:     RCSTAbits.CREN = 1;
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"109
+[; ;ASCII.c: 109:     TXSTAbits.TXEN = 1;
+[e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
+"111
+[; ;ASCII.c: 111: }
+[e :UE 156 ]
+}
+"113
+[; ;ASCII.c: 113: void send_char(char i){
 [v _send_char `(v ~T0 @X0 1 ef1`uc ]
 {
 [e :U _send_char ]
 [v _i `uc ~T0 @X0 1 r1 ]
 [f ]
-"92
-[; ;ASCII.c: 92:     while(PIR1bits.TXIF){
-[e $U 147  ]
-[e :U 148 ]
+"114
+[; ;ASCII.c: 114:     while(PIR1bits.TXIF){
+[e $U 158  ]
+[e :U 159 ]
 {
-"93
-[; ;ASCII.c: 93:         TXREG = i;
+"115
+[; ;ASCII.c: 115:         TXREG = i;
 [e = _TXREG -> _i `uc ]
-"94
-[; ;ASCII.c: 94:     }
+"116
+[; ;ASCII.c: 116:     }
 }
-[e :U 147 ]
-"92
-[; ;ASCII.c: 92:     while(PIR1bits.TXIF){
-[e $ != -> . . _PIR1bits 0 4 `i -> 0 `i 148  ]
-[e :U 149 ]
-"95
-[; ;ASCII.c: 95: }
-[e :UE 146 ]
+[e :U 158 ]
+"114
+[; ;ASCII.c: 114:     while(PIR1bits.TXIF){
+[e $ != -> . . _PIR1bits 0 4 `i -> 0 `i 159  ]
+[e :U 160 ]
+"117
+[; ;ASCII.c: 117:     return;
+[e $UE 157  ]
+"118
+[; ;ASCII.c: 118: }
+[e :UE 157 ]
 }
-"98
-[; ;ASCII.c: 98: void str(char str[]){
+"130
+[; ;ASCII.c: 130: void str(char *m){
 [v _str `(v ~T0 @X0 1 ef1`*uc ]
 {
 [e :U _str ]
-[v _str `*uc ~T0 @X0 1 r1 ]
+[v _m `*uc ~T0 @X0 1 r1 ]
 [f ]
-"99
-[; ;ASCII.c: 99:     int d = 0;
-[v _d `i ~T0 @X0 1 a ]
-[e = _d -> 0 `i ]
-"101
-[; ;ASCII.c: 101:     while (str[d] != 0){
-[e $U 151  ]
-[e :U 152 ]
+"131
+[; ;ASCII.c: 131:     while(*m != '\0'){
+[e $U 162  ]
+[e :U 163 ]
 {
-"102
-[; ;ASCII.c: 102:         send_char(str[d]);
-[e ( _send_char (1 *U + _str * -> _d `x -> -> # *U _str `i `x ]
-"103
-[; ;ASCII.c: 103:         d++;
-[e ++ _d -> 1 `i ]
-"104
-[; ;ASCII.c: 104:     }
+"132
+[; ;ASCII.c: 132:         send_char(*m);
+[e ( _send_char (1 *U _m ]
+"133
+[; ;ASCII.c: 133:         m++;
+[e ++ _m * -> -> 1 `i `x -> -> # *U _m `i `x ]
+"134
+[; ;ASCII.c: 134:     }
 }
-[e :U 151 ]
-"101
-[; ;ASCII.c: 101:     while (str[d] != 0){
-[e $ != -> *U + _str * -> _d `x -> -> # *U _str `i `x `i -> 0 `i 152  ]
-[e :U 153 ]
-"105
-[; ;ASCII.c: 105: }
-[e :UE 150 ]
+[e :U 162 ]
+"131
+[; ;ASCII.c: 131:     while(*m != '\0'){
+[e $ != -> *U _m `ui -> 0 `ui 163  ]
+[e :U 164 ]
+"135
+[; ;ASCII.c: 135:     return;
+[e $UE 161  ]
+"136
+[; ;ASCII.c: 136: }
+[e :UE 161 ]
 }
 [a 2C 49 41 32 68 101 115 112 108 101 103 97 114 32 99 97 100 101 110 97 32 100 101 32 99 97 114 97 99 116 101 114 101 115 32 13 0 ]
 [a 3C 50 41 32 67 97 109 98 105 97 114 32 80 79 82 84 65 32 13 0 ]

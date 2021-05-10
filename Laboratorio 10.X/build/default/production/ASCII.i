@@ -2644,8 +2644,10 @@ typedef uint16_t uintptr_t;
 
 void setup(void);
 void send_char(char i);
-void str(char str[]);
 
+void str(char *m);
+
+char f;
 
 
 void main(void) {
@@ -2660,8 +2662,28 @@ void main(void) {
         str("3) Cambiar PORTD \r\r");
 
         while(!PIR1bits.RCIF);
+        f = RCREG;
 
+        switch(f){
 
+            case('1'):
+                str('Hola');
+                break;
+
+            case('2'):
+                str('Ingrese un caracter para PORTA');
+                while(!PIR1bits.RCIF);
+                PORTA = RCREG;
+                str('\r Completado \r');
+                break;
+
+            case('3'):
+                str('Ingrese un caracter para PORTD');
+                while(!PIR1bits.RCIF);
+                PORTD = RCREG;
+                str('\r Completado \r');
+                break;
+        }
         }
 
 }
@@ -2707,14 +2729,13 @@ void send_char(char i){
     while(PIR1bits.TXIF){
         TXREG = i;
     }
+    return;
 }
-
-
-void str(char str[]){
-    int d = 0;
-
-    while (str[d] != 0){
-        send_char(str[d]);
-        d++;
+# 130 "ASCII.c"
+void str(char *m){
+    while(*m != '\0'){
+        send_char(*m);
+        m++;
     }
+    return;
 }
