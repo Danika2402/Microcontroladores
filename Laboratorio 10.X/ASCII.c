@@ -5,8 +5,8 @@
  * Created on 4 de mayo de 2021, 05:24 PM
  */
 //******************************************************************************
-/*Uso de potenciometros, leds y displays
- *Se usa leds y dsiplay 7 para medir el valor de 2 potenciometros con ADC
+/*Uso de la terminal con el pic
+ *Se usa la terminal para mandar caracteres al pic
  */
 //******************************************************************************
 #pragma config  FOSC    = INTRC_NOCLKOUT

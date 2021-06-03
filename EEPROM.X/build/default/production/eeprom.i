@@ -1,4 +1,4 @@
-# 1 "ASCII.c"
+# 1 "eeprom.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,13 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ASCII.c" 2
-# 12 "ASCII.c"
+# 1 "eeprom.c" 2
+
+
+
+
+
+
 #pragma config FOSC = INTRC_NOCLKOUT
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -16,8 +21,8 @@
 #pragma config CPD = OFF
 #pragma config BOREN = OFF
 #pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+#pragma config FCMEN = ON
+#pragma config LVP = ON
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
@@ -2503,7 +2508,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 26 "ASCII.c" 2
+# 21 "eeprom.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.31\\pic\\include\\c90\\stdint.h" 3
@@ -2638,102 +2643,117 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 27 "ASCII.c" 2
+# 22 "eeprom.c" 2
 
 
+
+
+uint8_t adc_val;
+uint8_t RB0_old = 1;
 
 void setup(void);
-void send_char(char i);
+void writeEEPROM(uint8_t data, uint8_t address);
+int8_t readEEPROM(uint8_t address);
 
-void str(char *m);
+void __attribute__((picinterrupt(("")))) isr(void){
+    if(INTCONbits.RBIF){
 
-char f;
 
+        PORTB = PORTB;
+        INTCONbits.RBIF = 0;
+    }
+}
 
 void main(void) {
+
     setup();
-
-
     while(1){
-        _delay((unsigned long)((500)*(1000000/4000.0)));
-        str("¿Que acción desea ejecutar? \r");
-        str("1) Desplegar cadena de caracteres \r");
-        str("2) Cambiar PORTA \r");
-        str("3) Cambiar PORTD \r\r");
+        _delay((unsigned long)((100)*(4000000/4000000.0)));
 
-        while(!PIR1bits.RCIF);
-        f = RCREG;
-
-        switch(f){
-
-            case('1'):
-                str('Hola');
-                break;
-
-            case('2'):
-                str('Ingrese un caracter para PORTA');
-                while(!PIR1bits.RCIF);
-                PORTA = RCREG;
-                str('\r Completado \r');
-                break;
-
-            case('3'):
-                str('Ingrese un caracter para PORTD');
-                while(!PIR1bits.RCIF);
-                PORTD = RCREG;
-                str('\r Completado \r');
-                break;
-        }
+        if(ADCON0bits.GO == 0){
+            adc_val = ADRESH;
+            PORTD = adc_val;
+            _delay((unsigned long)((100)*(4000000/4000000.0)));
+            ADCON0bits.GO = 1;
         }
 
+        if(RB0 == 1 && RB0_old == 0){
+            writeEEPROM(adc_val, 0x5);
+        }
+
+        RB0_old = RB0;
+
+        if(RB1 == 0){
+            __asm("sleep");
+        }
+        PORTC = (char)readEEPROM(0x05);
+    }
 }
 
-void setup (void){
+void setup(void){
 
-    ANSEL = 0x00;
+    ANSEL =0b00100000;
     ANSELH = 0x00;
 
+    TRISB = 0b111;
     TRISC = 0x00;
-    TRISCbits.TRISC7 = 1;
-    TRISA = 0x00;
     TRISD = 0x00;
 
-    PORTA = 0;
-    PORTC = 0;
-    PORTD = 0;
+    PORTB = 0x00;
+    PORTC = 0x00;
+    PORTD = 0x00;
 
+    OPTION_REGbits.nRBPU = 0;
+    WPUB = 0b111;
 
-    OSCCONbits.IRCF2 =1;
-    OSCCONbits.IRCF1 =0;
-    OSCCONbits.IRCF0 =0;
-    OSCCONbits.SCS =1;
+    INTCONbits.RBIE = 1;
+    INTCONbits.RBIF = 0;
+    IOCB = 0b0100;
+    INTCONbits.GIE = 0;
 
+    OSCCONbits.IRCF = 0b110;
+    OSCCONbits.SCS = 1;
 
-    TXSTAbits.TX9 = 0;
+    ADCON1bits.ADFM = 0;
+    ADCON1bits.VCFG0= 0;
+    ADCON1bits.VCFG1= 0;
 
-    TXSTAbits.SYNC = 0;
-    BAUDCTLbits.BRG16 = 1;
-    TXSTAbits.BRGH = 1;
+    ADCON0bits.ADCS = 0b01;
+    ADCON0bits.CHS = 5;
+    _delay((unsigned long)((100)*(4000000/4000000.0)));
+    ADCON0bits.ADON = 1;
+    _delay((unsigned long)((100)*(4000000/4000000.0)));
 
-    SPBRG = 25;
-    SPBRGH = 0;
-
-    RCSTAbits.SPEN = 1;
-    RCSTAbits.RX9 = 0;
-    RCSTAbits.CREN = 1;
-    TXSTAbits.TXEN = 1;
-
+    return;
 }
 
-void send_char(char i){
-    while(PIR1bits.TXIF){
-        TXREG = i;
-    }
+void writeEEPROM(uint8_t data, uint8_t address){
+
+    EEADR = address;
+    EEDAT = data;
+
+    EECON1bits.EEPGD = 0;
+    EECON1bits.WREN = 1;
+
+    INTCONbits.GIE = 0;
+
+    EECON2 = 0x55;
+    EECON2 = 0xAA;
+    EECON1bits.WR = 1;
+
+    while(!PIR2bits.EEIF);
+    PIR2bits.EEIF = 0;
+    EECON1bits.WREN = 1;
+    INTCONbits.GIE = 0;
+
+    return;
 }
-# 129 "ASCII.c"
-void str(char *m){
-    while(*m != '\0'){
-        send_char(*m);
-        m++;
-    }
+int8_t readEEPROM(uint8_t address){
+
+    EEADR = address;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.RD = 1;
+    int8_t data = (int8_t)EEDAT;
+
+    return data;
 }

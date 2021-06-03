@@ -1,16 +1,13 @@
 /*
- * File:   PWM.c
+ * File:   Brazo.c
  * Author: Danika
  *
- * Created on 27 de abril de 2021, 04:41 PM
+ * Created on 26 de mayo de 2021, 01:12 PM
  */
 //******************************************************************************
-/*Uso de 2 potenciometros y servos
- * Se usa el ADC junto con el PWM para controlar 2 servos
- * con 2 potenciometros
+/*/
  */
 //******************************************************************************
-
 #pragma config  FOSC    = INTRC_NOCLKOUT
 #pragma config  WDTE    = OFF
 #pragma config  PWRTE   = OFF
@@ -19,75 +16,95 @@
 #pragma config  CPD     = OFF
 #pragma config  BOREN   = OFF
 #pragma config  IESO    = OFF
-#pragma config  FCMEN   = ON
-#pragma config  LVP     = ON
+#pragma config  FCMEN   = OFF
+#pragma config  LVP     = OFF
 
 #pragma config  BOR4V   = BOR40V
 #pragma config  WRT     = OFF
 
-
 #include <xc.h>
 #include <stdint.h>
 
-#define _XTAL_FREQ  4000000 
+#define _XTAL_FREQ  4000000
 
-char i;
 
 void setup(void);
+char i;
+uint8_t adc_val;
+uint8_t RB0_old = 1;
 
-void __interrupt() isr(void){
+void setup(void);
+void writeEEPROM(uint8_t data, uint8_t address);
+int8_t readEEPROM(uint8_t address);
+
+void __interrupt() isr (void){
     
     if(PIR1bits.ADIF){ 
         
         if(i == 2){
-            PORTB   = ADRESH;                    //Aqui se activa CCP1
-            CCPR1L  = (PORTB >> 1) + 35;         //usando el puerto para el adresh   
-            CCP1CONbits.DC1B1 = PORTBbits.RB0;   //que despues se elimina el bit 
-            CCP1CONbits.DC1B0 = ADRESL >> 7;     //menos significativo   
-                                                 //y con 35 se ajusta para el pot
-        }else if (i == 1){                      
+            CCPR1L  = (ADRESH >> 1) + 35;           
             
-            PORTD   = ADRESH;                    //Aqui se activa CCP2
-            CCPR2L  = (PORTD >> 1) + 35;         //y se realiza lo mismo
-            CCP1CONbits.DC1B1 = PORTDbits.RD0;
-            CCP1CONbits.DC1B0 = ADRESL >> 7;
+        }else if (i == 1){                      
+            CCPR2L  = (ADRESH >> 1) + 35;         //y se realiza lo mismo
+
         }
         
         i--;                                    //Con la variable i realizamos
-        if (i == 0){                            //realizamos un loop donde
+        if (i == 0){                            // un loop donde
             i = 2;                              //cada uno es dedicado a un
         }                                       //PWM diferente
-        PIR1bits.ADIF = 0;      //se baja la bandera
+        PIR1bits.ADIF = 0;                      //se baja la bandera
     }
 }
 
 void main(void) {
     setup();
-           
+    
     while(1){
         
         if(ADCON0bits.GO == 0){                 //Aqui se realiza otro loop 
                                                 //constantemente cambiando 
-            if (ADCON0bits.CHS == 0){           //los canales
-                ADCON0bits.CHS = 1;             //si esta en el canal 0
+            if (ADCON0bits.CHS == 5){           //los canales
+               
+                adc_val = ADRESH;
+                __delay_us(100);
+                ADCON0bits.CHS = 6;             //si esta en el canal 0
                                                 //entonces cambia al canal 1 
-            }else if (ADCON0bits.CHS == 1){     // y viceversa    
-                ADCON0bits.CHS = 0;                               
+            }else if (ADCON0bits.CHS == 6){     // y viceversa    
+                
+                adc_val = ADRESH;
+                __delay_us(100);
+                
+                
+                ADCON0bits.CHS = 5;                               
             }
                           
             __delay_us(50);
             ADCON0bits.GO = 1;      //se baja bandera
         }
+        if(RB0 == 1 && RB0_old == 0){
+            TRISBbits.TRISB5 = 1;
+            writeEEPROM(adc_val, 0x5);
+        }
+        
+        RB0_old = RB0;
+        
+        if(RB1 == 0){
+            TRISBbits.TRISB6 = 1;
+            SLEEP();
     }
+        PORTA   = (char)readEEPROM(0x05);
+        PORTD   = (char)readEEPROM(0x10);
+}
 }
 
 void setup(void){
-   
-    ANSEL   = 0b00000110;     //se activa el canal 0 y 1
+    
+    ANSEL   = 0b01100000;     //se activa el canal 5 y 6
     ANSELH  = 0x00;
     
-    TRISA   = 0xff;     //puerto A como entrada
-    TRISB   = 0x00;     //puerto B,C y D como salida
+    TRISA   = 0x00;
+    TRISB   = 0b111;
     TRISC   = 0x00;
     TRISD   = 0x00;
     
@@ -110,7 +127,7 @@ void setup(void){
     ADCON0bits.ADCS0 = 1;   //fosc/32
     ADCON0bits.ADCS1 = 0;
     
-    ADCON0bits.CHS  =0;
+    ADCON0bits.CHS  =5;
     __delay_us(50);
     ADCON0bits.ADON = 1;        //enciende adc
     
@@ -154,7 +171,44 @@ void setup(void){
     PIR1bits.ADIF   = 0;        
     PIE1bits.ADIE   = 1;
     INTCONbits.PEIE = 1;
-    INTCONbits.GIE = 1;
+    INTCONbits.GIE  = 1;
+    
+    OPTION_REGbits.nRBPU = 0;
+    WPUB    = 0b111;
+    
+    INTCONbits.RBIE = 1;
+    INTCONbits.RBIF = 0;
+    IOCB    = 0b0100;
     
     i   = 2;
+}
+void writeEEPROM(uint8_t data, uint8_t address){
+    
+    EEADR   = address;
+    EEDAT   = data;
+    
+    EECON1bits.EEPGD = 0;
+    EECON1bits.WREN  = 1;
+    
+    INTCONbits.GIE  = 0;
+    
+    EECON2  = 0x55;
+    EECON2  = 0xAA;
+    EECON1bits.WR   = 1;
+    
+    while(!PIR2bits.EEIF);
+    PIR2bits.EEIF   = 0;
+    EECON1bits.WREN  = 1;
+    INTCONbits.GIE  = 1;
+    
+    return;
+}
+int8_t readEEPROM(uint8_t address){
+    
+    EEADR   = address;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.RD    = 1;
+    int8_t data = (int8_t)EEDAT;
+    
+    return data;
 }
