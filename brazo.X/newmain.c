@@ -1,13 +1,10 @@
 /*
- * File:   Brazo.c
+ * File:   newmain.c
  * Author: Danika
  *
- * Created on 26 de mayo de 2021, 01:12 PM
+ * Created on 4 de junio de 2021, 12:45 AM
  */
-//******************************************************************************
-/*/
- */
-//******************************************************************************
+
 #pragma config  FOSC    = INTRC_NOCLKOUT
 #pragma config  WDTE    = OFF
 #pragma config  PWRTE   = OFF

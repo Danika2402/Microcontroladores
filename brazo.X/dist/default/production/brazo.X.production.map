@@ -3,23 +3,23 @@ Microchip MPLAB XC8 Compiler V2.31
 Linker command line:
 
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.31\pic\dat\en_msgs.txt -cn \
-  -h+dist/default/production\Brazo_robotico.X.production.sym \
-  --cmf=dist/default/production\Brazo_robotico.X.production.cmf -z -Q16F887 \
-  -oC:\Users\Pavilion\AppData\Local\Temp\s1m4.2 --defsym=__MPLAB_BUILD=1 \
-  -Mdist/default/production/Brazo_robotico.X.production.map -E1 \
-  -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
-  -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
-  -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh \
-  -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh \
-  -ABANK3=0190h-01EFh -ARAM=020h-06Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh \
+  -h+dist/default/production\brazo.X.production.sym \
+  --cmf=dist/default/production\brazo.X.production.cmf -z -Q16F887 \
+  -oC:\Users\Pavilion\AppData\Local\Temp\slgs.2 --defsym=__MPLAB_BUILD=1 \
+  -Mdist/default/production/brazo.X.production.map -E1 -ver=XC8 Compiler \
+  --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK -ACODE=00h-07FFhx4 \
+  -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
+  -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh -ABANK0=020h-06Fh \
+  -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh -ABANK3=0190h-01EFh \
+  -ARAM=020h-06Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh \
   -AABS1=020h-07Fh,0A0h-0EFh,0110h-016Fh,0190h-01EFh -ASFR0=00h-01Fh \
   -ASFR1=080h-09Fh -ASFR2=0100h-010Fh -ASFR3=0180h-018Fh \
   -ACONFIG=02007h-02008h -DCONFIG=2 -AIDLOC=02000h-02003h -DIDLOC=2 \
   -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 \
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
-  -pfunctab=ENTRY -k C:\Users\Pavilion\AppData\Local\Temp\s1m4.o \
-  dist/default/production\Brazo_robotico.X.production.o 
+  -pfunctab=ENTRY -k C:\Users\Pavilion\AppData\Local\Temp\slgs.o \
+  dist/default/production\brazo.X.production.o 
 
 Object code version is 3.11
 
@@ -28,11 +28,11 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Pavilion\AppData\Local\Temp\s1m4.o
+C:\Users\Pavilion\AppData\Local\Temp\slgs.o
                 end_init                              C        C        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
-dist/default/production\Brazo_robotico.X.production.o
+dist/default/production\brazo.X.production.o
                 cinit                                 F        F        C        8       0
                 intentry                              4        4        8        8       0
                 config                             2007     2007        2        0       4
@@ -311,7 +311,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 60 in file "Brazo.c"
+		line 57 in file "newmain.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -342,7 +342,7 @@ Total ram usage:        1 bytes
 
  *************** function _writeEEPROM *****************
  Defined at:
-		line 184 in file "Brazo.c"
+		line 181 in file "newmain.c"
  Parameters:    Size  Location     Type
   data            1    wreg     unsigned char 
   address         1    3[COMMON] unsigned char 
@@ -373,7 +373,7 @@ Total ram usage:        2 bytes
 
  *************** function _setup *****************
  Defined at:
-		line 100 in file "Brazo.c"
+		line 97 in file "newmain.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -403,7 +403,7 @@ Total ram usage:        1 bytes
 
  *************** function _readEEPROM *****************
  Defined at:
-		line 205 in file "Brazo.c"
+		line 202 in file "newmain.c"
  Parameters:    Size  Location     Type
   address         1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -434,7 +434,7 @@ Total ram usage:        3 bytes
 
  *************** function _isr *****************
  Defined at:
-		line 40 in file "Brazo.c"
+		line 37 in file "newmain.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -465,17 +465,17 @@ Total ram usage:        3 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
-shared
-		__initialization		CODE           	000F	0000	8
-
-shared estimated size: 8
-
-Brazo.c
+newmain.c
 		_main          		CODE           	001B	0000	124
 		_isr           		CODE           	00FD	0000	49
 		_setup         		CODE           	0097	0000	102
 		_readEEPROM    		CODE           	014B	0000	17
 		_writeEEPROM   		CODE           	012E	0000	29
 
-Brazo.c estimated size: 321
+newmain.c estimated size: 321
+
+shared
+		__initialization		CODE           	000F	0000	8
+
+shared estimated size: 8
 

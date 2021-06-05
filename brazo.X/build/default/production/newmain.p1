@@ -22,8 +22,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1154: extern volatile unsigned char CCPR2L __attribute__((address(0x01B)));
 [v _CCPR2L `Vuc ~T0 @X0 0 e@27 ]
 [p mainexit ]
-"36 Brazo.c
-[; ;Brazo.c: 36: void setup(void);
+"33 newmain.c
+[; ;newmain.c: 33: void setup(void);
 [v _setup `(v ~T0 @X0 0 ef ]
 "1251 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1251:     struct {
@@ -66,8 +66,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1495
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 1495: extern volatile TRISBbits_t TRISBbits __attribute__((address(0x086)));
 [v _TRISBbits `VS54 ~T0 @X0 0 e@134 ]
-"37 Brazo.c
-[; ;Brazo.c: 37: void writeEEPROM(uint8_t data, uint8_t address);
+"34 newmain.c
+[; ;newmain.c: 34: void writeEEPROM(uint8_t data, uint8_t address);
 [v _writeEEPROM `(v ~T0 @X0 0 ef2`uc`uc ]
 "4106 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 4106: extern volatile __bit RB1 __attribute__((address(0x31)));
@@ -75,8 +75,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "166
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
-"38 Brazo.c
-[; ;Brazo.c: 38: int8_t readEEPROM(uint8_t address);
+"35 newmain.c
+[; ;newmain.c: 35: int8_t readEEPROM(uint8_t address);
 [v _readEEPROM `(c ~T0 @X0 0 ef1`uc ]
 "352 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 352: extern volatile unsigned char PORTD __attribute__((address(0x008)));
@@ -272,29 +272,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "610
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 610: extern volatile PIR2bits_t PIR2bits __attribute__((address(0x00D)));
 [v _PIR2bits `VS20 ~T0 @X0 0 e@13 ]
-"11 Brazo.c
+"8 newmain.c
 [p x FOSC        =  INTRC_NOCLKOUT ]
-"12
+"9
 [p x WDTE        =  OFF ]
-"13
+"10
 [p x PWRTE      =  OFF ]
-"14
+"11
 [p x MCLRE      =  OFF ]
-"15
+"12
 [p x CP            =  OFF ]
-"16
+"13
 [p x CPD          =  OFF ]
-"17
+"14
 [p x BOREN      =  OFF ]
-"18
+"15
 [p x IESO        =  OFF ]
-"19
+"16
 [p x FCMEN      =  OFF ]
-"20
+"17
 [p x LVP          =  OFF ]
-"22
+"19
 [p x BOR4V      =  BOR40V ]
-"23
+"20
 [p x WRT          =  OFF ]
 "54 C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 54: __asm("INDF equ 00h");
@@ -530,432 +530,432 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:/Program Files/Microchip/MPLABX/v5.45/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"32 Brazo.c
-[; ;Brazo.c: 32: char i;
+"29 newmain.c
+[; ;newmain.c: 29: char i;
 [v _i `uc ~T0 @X0 1 e ]
-"33
-[; ;Brazo.c: 33: uint8_t adc_val;
+"30
+[; ;newmain.c: 30: uint8_t adc_val;
 [v _adc_val `uc ~T0 @X0 1 e ]
-"34
-[; ;Brazo.c: 34: uint8_t RB0_old = 1;
+"31
+[; ;newmain.c: 31: uint8_t RB0_old = 1;
 [v _RB0_old `uc ~T0 @X0 1 e ]
 [i _RB0_old
 -> -> 1 `i `uc
 ]
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"40
-[; ;Brazo.c: 40: void __attribute__((picinterrupt(("")))) isr (void){
+"37
+[; ;newmain.c: 37: void __attribute__((picinterrupt(("")))) isr (void){
 [v _isr `(v ~T1 @X0 1 ef ]
 {
 [e :U _isr ]
 [f ]
-"42
-[; ;Brazo.c: 42:     if(PIR1bits.ADIF){
+"39
+[; ;newmain.c: 39:     if(PIR1bits.ADIF){
 [e $ ! != -> . . _PIR1bits 0 6 `i -> 0 `i 139  ]
 {
-"44
-[; ;Brazo.c: 44:         if(i == 2){
+"41
+[; ;newmain.c: 41:         if(i == 2){
 [e $ ! == -> _i `i -> 2 `i 140  ]
 {
-"45
-[; ;Brazo.c: 45:             CCPR1L = (ADRESH >> 1) + 35;
+"42
+[; ;newmain.c: 42:             CCPR1L = (ADRESH >> 1) + 35;
 [e = _CCPR1L -> + >> -> _ADRESH `i -> 1 `i -> 35 `i `uc ]
-"47
-[; ;Brazo.c: 47:         }else if (i == 1){
+"44
+[; ;newmain.c: 44:         }else if (i == 1){
 }
 [e $U 141  ]
 [e :U 140 ]
 [e $ ! == -> _i `i -> 1 `i 142  ]
 {
-"48
-[; ;Brazo.c: 48:             CCPR2L = (ADRESH >> 1) + 35;
+"45
+[; ;newmain.c: 45:             CCPR2L = (ADRESH >> 1) + 35;
 [e = _CCPR2L -> + >> -> _ADRESH `i -> 1 `i -> 35 `i `uc ]
-"50
-[; ;Brazo.c: 50:         }
+"47
+[; ;newmain.c: 47:         }
 }
 [e :U 142 ]
 [e :U 141 ]
-"52
-[; ;Brazo.c: 52:         i--;
+"49
+[; ;newmain.c: 49:         i--;
 [e -- _i -> -> 1 `i `uc ]
-"53
-[; ;Brazo.c: 53:         if (i == 0){
+"50
+[; ;newmain.c: 50:         if (i == 0){
 [e $ ! == -> _i `i -> 0 `i 143  ]
 {
-"54
-[; ;Brazo.c: 54:             i = 2;
+"51
+[; ;newmain.c: 51:             i = 2;
 [e = _i -> -> 2 `i `uc ]
-"55
-[; ;Brazo.c: 55:         }
+"52
+[; ;newmain.c: 52:         }
 }
 [e :U 143 ]
-"56
-[; ;Brazo.c: 56:         PIR1bits.ADIF = 0;
+"53
+[; ;newmain.c: 53:         PIR1bits.ADIF = 0;
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"57
-[; ;Brazo.c: 57:     }
+"54
+[; ;newmain.c: 54:     }
 }
 [e :U 139 ]
-"58
-[; ;Brazo.c: 58: }
+"55
+[; ;newmain.c: 55: }
 [e :UE 138 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"60
-[; ;Brazo.c: 60: void main(void) {
+"57
+[; ;newmain.c: 57: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"61
-[; ;Brazo.c: 61:     setup();
+"58
+[; ;newmain.c: 58:     setup();
 [e ( _setup ..  ]
-"63
-[; ;Brazo.c: 63:     while(1){
+"60
+[; ;newmain.c: 60:     while(1){
 [e :U 146 ]
 {
-"65
-[; ;Brazo.c: 65:         if(ADCON0bits.GO == 0){
+"62
+[; ;newmain.c: 62:         if(ADCON0bits.GO == 0){
 [e $ ! == -> . . _ADCON0bits 1 1 `i -> 0 `i 148  ]
 {
-"67
-[; ;Brazo.c: 67:             if (ADCON0bits.CHS == 5){
+"64
+[; ;newmain.c: 64:             if (ADCON0bits.CHS == 5){
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 5 `i 149  ]
 {
-"69
-[; ;Brazo.c: 69:                 adc_val = ADRESH;
+"66
+[; ;newmain.c: 66:                 adc_val = ADRESH;
 [e = _adc_val _ADRESH ]
-"70
-[; ;Brazo.c: 70:                 _delay((unsigned long)((100)*(4000000/4000000.0)));
+"67
+[; ;newmain.c: 67:                 _delay((unsigned long)((100)*(4000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"71
-[; ;Brazo.c: 71:                 ADCON0bits.CHS = 6;
+"68
+[; ;newmain.c: 68:                 ADCON0bits.CHS = 6;
 [e = . . _ADCON0bits 0 2 -> -> 6 `i `uc ]
-"73
-[; ;Brazo.c: 73:             }else if (ADCON0bits.CHS == 6){
+"70
+[; ;newmain.c: 70:             }else if (ADCON0bits.CHS == 6){
 }
 [e $U 150  ]
 [e :U 149 ]
 [e $ ! == -> . . _ADCON0bits 0 2 `i -> 6 `i 151  ]
 {
-"75
-[; ;Brazo.c: 75:                 adc_val = ADRESH;
+"72
+[; ;newmain.c: 72:                 adc_val = ADRESH;
 [e = _adc_val _ADRESH ]
-"76
-[; ;Brazo.c: 76:                 _delay((unsigned long)((100)*(4000000/4000000.0)));
+"73
+[; ;newmain.c: 73:                 _delay((unsigned long)((100)*(4000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"78
-[; ;Brazo.c: 78:                 ADCON0bits.CHS = 5;
+"75
+[; ;newmain.c: 75:                 ADCON0bits.CHS = 5;
 [e = . . _ADCON0bits 0 2 -> -> 5 `i `uc ]
-"79
-[; ;Brazo.c: 79:             }
+"76
+[; ;newmain.c: 76:             }
 }
 [e :U 151 ]
 [e :U 150 ]
-"81
-[; ;Brazo.c: 81:             _delay((unsigned long)((50)*(4000000/4000000.0)));
+"78
+[; ;newmain.c: 78:             _delay((unsigned long)((50)*(4000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"82
-[; ;Brazo.c: 82:             ADCON0bits.GO = 1;
+"79
+[; ;newmain.c: 79:             ADCON0bits.GO = 1;
 [e = . . _ADCON0bits 1 1 -> -> 1 `i `uc ]
-"83
-[; ;Brazo.c: 83:         }
+"80
+[; ;newmain.c: 80:         }
 }
 [e :U 148 ]
-"84
-[; ;Brazo.c: 84:         if(RB0 == 1 && RB0_old == 0){
+"81
+[; ;newmain.c: 81:         if(RB0 == 1 && RB0_old == 0){
 [e $ ! && == -> _RB0 `i -> 1 `i == -> _RB0_old `i -> 0 `i 152  ]
 {
-"85
-[; ;Brazo.c: 85:             TRISBbits.TRISB5 = 1;
+"82
+[; ;newmain.c: 82:             TRISBbits.TRISB5 = 1;
 [e = . . _TRISBbits 0 5 -> -> 1 `i `uc ]
-"86
-[; ;Brazo.c: 86:             writeEEPROM(adc_val, 0x5);
+"83
+[; ;newmain.c: 83:             writeEEPROM(adc_val, 0x5);
 [e ( _writeEEPROM (2 , _adc_val -> -> 5 `i `uc ]
-"87
-[; ;Brazo.c: 87:         }
+"84
+[; ;newmain.c: 84:         }
 }
 [e :U 152 ]
-"89
-[; ;Brazo.c: 89:         RB0_old = RB0;
+"86
+[; ;newmain.c: 86:         RB0_old = RB0;
 [e = _RB0_old -> _RB0 `uc ]
-"91
-[; ;Brazo.c: 91:         if(RB1 == 0){
+"88
+[; ;newmain.c: 88:         if(RB1 == 0){
 [e $ ! == -> _RB1 `i -> 0 `i 153  ]
 {
-"92
-[; ;Brazo.c: 92:             TRISBbits.TRISB6 = 1;
+"89
+[; ;newmain.c: 89:             TRISBbits.TRISB6 = 1;
 [e = . . _TRISBbits 0 6 -> -> 1 `i `uc ]
-"93
-[; ;Brazo.c: 93:             __asm("sleep");
+"90
+[; ;newmain.c: 90:             __asm("sleep");
 [; <" sleep ;# ">
-"94
-[; ;Brazo.c: 94:     }
+"91
+[; ;newmain.c: 91:     }
 }
 [e :U 153 ]
-"95
-[; ;Brazo.c: 95:         PORTA = (char)readEEPROM(0x05);
+"92
+[; ;newmain.c: 92:         PORTA = (char)readEEPROM(0x05);
 [e = _PORTA -> -> ( _readEEPROM (1 -> -> 5 `i `uc `uc `uc ]
-"96
-[; ;Brazo.c: 96:         PORTD = (char)readEEPROM(0x10);
+"93
+[; ;newmain.c: 93:         PORTD = (char)readEEPROM(0x10);
 [e = _PORTD -> -> ( _readEEPROM (1 -> -> 16 `i `uc `uc `uc ]
-"97
-[; ;Brazo.c: 97: }
+"94
+[; ;newmain.c: 94: }
 }
 [e :U 145 ]
 [e $U 146  ]
 [e :U 147 ]
-"98
-[; ;Brazo.c: 98: }
+"95
+[; ;newmain.c: 95: }
 [e :UE 144 ]
 }
-"100
-[; ;Brazo.c: 100: void setup(void){
+"97
+[; ;newmain.c: 97: void setup(void){
 [v _setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _setup ]
 [f ]
-"102
-[; ;Brazo.c: 102:     ANSEL = 0b01100000;
+"99
+[; ;newmain.c: 99:     ANSEL = 0b01100000;
 [e = _ANSEL -> -> 96 `i `uc ]
-"103
-[; ;Brazo.c: 103:     ANSELH = 0x00;
+"100
+[; ;newmain.c: 100:     ANSELH = 0x00;
 [e = _ANSELH -> -> 0 `i `uc ]
-"105
-[; ;Brazo.c: 105:     TRISA = 0x00;
+"102
+[; ;newmain.c: 102:     TRISA = 0x00;
 [e = _TRISA -> -> 0 `i `uc ]
-"106
-[; ;Brazo.c: 106:     TRISB = 0b111;
+"103
+[; ;newmain.c: 103:     TRISB = 0b111;
 [e = _TRISB -> -> 7 `i `uc ]
-"107
-[; ;Brazo.c: 107:     TRISC = 0x00;
+"104
+[; ;newmain.c: 104:     TRISC = 0x00;
 [e = _TRISC -> -> 0 `i `uc ]
-"108
-[; ;Brazo.c: 108:     TRISD = 0x00;
+"105
+[; ;newmain.c: 105:     TRISD = 0x00;
 [e = _TRISD -> -> 0 `i `uc ]
-"110
-[; ;Brazo.c: 110:     PORTA = 0;
+"107
+[; ;newmain.c: 107:     PORTA = 0;
 [e = _PORTA -> -> 0 `i `uc ]
-"111
-[; ;Brazo.c: 111:     PORTB = 0;
+"108
+[; ;newmain.c: 108:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"112
-[; ;Brazo.c: 112:     PORTC = 0;
+"109
+[; ;newmain.c: 109:     PORTC = 0;
 [e = _PORTC -> -> 0 `i `uc ]
-"113
-[; ;Brazo.c: 113:     PORTD = 0;
+"110
+[; ;newmain.c: 110:     PORTD = 0;
 [e = _PORTD -> -> 0 `i `uc ]
-"116
-[; ;Brazo.c: 116:     OSCCONbits.IRCF2 =1;
+"113
+[; ;newmain.c: 113:     OSCCONbits.IRCF2 =1;
 [e = . . _OSCCONbits 1 3 -> -> 1 `i `uc ]
-"117
-[; ;Brazo.c: 117:     OSCCONbits.IRCF1 =1;
+"114
+[; ;newmain.c: 114:     OSCCONbits.IRCF1 =1;
 [e = . . _OSCCONbits 1 2 -> -> 1 `i `uc ]
-"118
-[; ;Brazo.c: 118:     OSCCONbits.IRCF0 =0;
+"115
+[; ;newmain.c: 115:     OSCCONbits.IRCF0 =0;
 [e = . . _OSCCONbits 1 1 -> -> 0 `i `uc ]
-"119
-[; ;Brazo.c: 119:     OSCCONbits.SCS =1;
+"116
+[; ;newmain.c: 116:     OSCCONbits.SCS =1;
 [e = . . _OSCCONbits 0 0 -> -> 1 `i `uc ]
-"122
-[; ;Brazo.c: 122:     ADCON1bits.ADFM = 0;
+"119
+[; ;newmain.c: 119:     ADCON1bits.ADFM = 0;
 [e = . . _ADCON1bits 0 4 -> -> 0 `i `uc ]
+"120
+[; ;newmain.c: 120:     ADCON1bits.VCFG0 = 0;
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+"121
+[; ;newmain.c: 121:     ADCON1bits.VCFG0 = 0;
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
 "123
-[; ;Brazo.c: 123:     ADCON1bits.VCFG0 = 0;
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
-"124
-[; ;Brazo.c: 124:     ADCON1bits.VCFG0 = 0;
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
-"126
-[; ;Brazo.c: 126:     ADCON0bits.ADCS0 = 1;
+[; ;newmain.c: 123:     ADCON0bits.ADCS0 = 1;
 [e = . . _ADCON0bits 1 6 -> -> 1 `i `uc ]
-"127
-[; ;Brazo.c: 127:     ADCON0bits.ADCS1 = 0;
+"124
+[; ;newmain.c: 124:     ADCON0bits.ADCS1 = 0;
 [e = . . _ADCON0bits 1 7 -> -> 0 `i `uc ]
-"129
-[; ;Brazo.c: 129:     ADCON0bits.CHS =5;
+"126
+[; ;newmain.c: 126:     ADCON0bits.CHS =5;
 [e = . . _ADCON0bits 0 2 -> -> 5 `i `uc ]
-"130
-[; ;Brazo.c: 130:     _delay((unsigned long)((50)*(4000000/4000000.0)));
+"127
+[; ;newmain.c: 127:     _delay((unsigned long)((50)*(4000000/4000000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-"131
-[; ;Brazo.c: 131:     ADCON0bits.ADON = 1;
+"128
+[; ;newmain.c: 128:     ADCON0bits.ADON = 1;
 [e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-"135
-[; ;Brazo.c: 135:     TRISCbits.TRISC2 = 1;
+"132
+[; ;newmain.c: 132:     TRISCbits.TRISC2 = 1;
 [e = . . _TRISCbits 0 2 -> -> 1 `i `uc ]
-"136
-[; ;Brazo.c: 136:     TRISCbits.TRISC1 = 1;
+"133
+[; ;newmain.c: 133:     TRISCbits.TRISC1 = 1;
 [e = . . _TRISCbits 0 1 -> -> 1 `i `uc ]
-"138
-[; ;Brazo.c: 138:     PR2 = 125;
+"135
+[; ;newmain.c: 135:     PR2 = 125;
 [e = _PR2 -> -> 125 `i `uc ]
-"141
-[; ;Brazo.c: 141:     CCP1CONbits.P1M = 0b00;
+"138
+[; ;newmain.c: 138:     CCP1CONbits.P1M = 0b00;
 [e = . . _CCP1CONbits 0 2 -> -> 0 `i `uc ]
-"142
-[; ;Brazo.c: 142:     CCP1CONbits.CCP1M = 0b00001100;
+"139
+[; ;newmain.c: 139:     CCP1CONbits.CCP1M = 0b00001100;
 [e = . . _CCP1CONbits 0 0 -> -> 12 `i `uc ]
-"144
-[; ;Brazo.c: 144:     CCP2CONbits.CCP2M = 0b00001100;
+"141
+[; ;newmain.c: 141:     CCP2CONbits.CCP2M = 0b00001100;
 [e = . . _CCP2CONbits 0 0 -> -> 12 `i `uc ]
-"147
-[; ;Brazo.c: 147:     CCPR1L = 93;
+"144
+[; ;newmain.c: 144:     CCPR1L = 93;
 [e = _CCPR1L -> -> 93 `i `uc ]
-"148
-[; ;Brazo.c: 148:     CCP1CONbits.DC1B0 = 1;
+"145
+[; ;newmain.c: 145:     CCP1CONbits.DC1B0 = 1;
 [e = . . _CCP1CONbits 1 4 -> -> 1 `i `uc ]
-"149
-[; ;Brazo.c: 149:     CCP1CONbits.DC1B1 = 1;
+"146
+[; ;newmain.c: 146:     CCP1CONbits.DC1B1 = 1;
 [e = . . _CCP1CONbits 1 5 -> -> 1 `i `uc ]
-"151
-[; ;Brazo.c: 151:     CCPR2L = 93;
+"148
+[; ;newmain.c: 148:     CCPR2L = 93;
 [e = _CCPR2L -> -> 93 `i `uc ]
-"152
-[; ;Brazo.c: 152:     CCP2CONbits.DC2B0 = 1;
+"149
+[; ;newmain.c: 149:     CCP2CONbits.DC2B0 = 1;
 [e = . . _CCP2CONbits 0 1 -> -> 1 `i `uc ]
-"153
-[; ;Brazo.c: 153:     CCP2CONbits.DC2B1 = 1;
+"150
+[; ;newmain.c: 150:     CCP2CONbits.DC2B1 = 1;
 [e = . . _CCP2CONbits 0 2 -> -> 1 `i `uc ]
-"157
-[; ;Brazo.c: 157:     PIR1bits.TMR2IF = 0;
+"154
+[; ;newmain.c: 154:     PIR1bits.TMR2IF = 0;
 [e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"158
-[; ;Brazo.c: 158:     T2CONbits.T2CKPS = 0b11;
+"155
+[; ;newmain.c: 155:     T2CONbits.T2CKPS = 0b11;
 [e = . . _T2CONbits 0 0 -> -> 3 `i `uc ]
-"159
-[; ;Brazo.c: 159:     T2CONbits.TMR2ON = 1;
+"156
+[; ;newmain.c: 156:     T2CONbits.TMR2ON = 1;
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"162
-[; ;Brazo.c: 162:     while(!PIR1bits.TMR2IF);
+"159
+[; ;newmain.c: 159:     while(!PIR1bits.TMR2IF);
 [e $U 155  ]
 [e :U 156 ]
 [e :U 155 ]
 [e $ ! != -> . . _PIR1bits 0 1 `i -> 0 `i 156  ]
 [e :U 157 ]
-"163
-[; ;Brazo.c: 163:     PIR1bits.TMR2IF = 0;
+"160
+[; ;newmain.c: 160:     PIR1bits.TMR2IF = 0;
 [e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"166
-[; ;Brazo.c: 166:     TRISCbits.TRISC2 = 0;
+"163
+[; ;newmain.c: 163:     TRISCbits.TRISC2 = 0;
 [e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
-"167
-[; ;Brazo.c: 167:     TRISCbits.TRISC1 = 0;
+"164
+[; ;newmain.c: 164:     TRISCbits.TRISC1 = 0;
 [e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
-"170
-[; ;Brazo.c: 170:     PIR1bits.ADIF = 0;
+"167
+[; ;newmain.c: 167:     PIR1bits.ADIF = 0;
 [e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
-"171
-[; ;Brazo.c: 171:     PIE1bits.ADIE = 1;
+"168
+[; ;newmain.c: 168:     PIE1bits.ADIE = 1;
 [e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
-"172
-[; ;Brazo.c: 172:     INTCONbits.PEIE = 1;
+"169
+[; ;newmain.c: 169:     INTCONbits.PEIE = 1;
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-"173
-[; ;Brazo.c: 173:     INTCONbits.GIE = 1;
+"170
+[; ;newmain.c: 170:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"175
-[; ;Brazo.c: 175:     OPTION_REGbits.nRBPU = 0;
+"172
+[; ;newmain.c: 172:     OPTION_REGbits.nRBPU = 0;
 [e = . . _OPTION_REGbits 0 5 -> -> 0 `i `uc ]
-"176
-[; ;Brazo.c: 176:     WPUB = 0b111;
+"173
+[; ;newmain.c: 173:     WPUB = 0b111;
 [e = _WPUB -> -> 7 `i `uc ]
-"178
-[; ;Brazo.c: 178:     INTCONbits.RBIE = 1;
+"175
+[; ;newmain.c: 175:     INTCONbits.RBIE = 1;
 [e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"179
-[; ;Brazo.c: 179:     INTCONbits.RBIF = 0;
+"176
+[; ;newmain.c: 176:     INTCONbits.RBIF = 0;
 [e = . . _INTCONbits 0 0 -> -> 0 `i `uc ]
-"180
-[; ;Brazo.c: 180:     IOCB = 0b0100;
+"177
+[; ;newmain.c: 177:     IOCB = 0b0100;
 [e = _IOCB -> -> 4 `i `uc ]
-"182
-[; ;Brazo.c: 182:     i = 2;
+"179
+[; ;newmain.c: 179:     i = 2;
 [e = _i -> -> 2 `i `uc ]
-"183
-[; ;Brazo.c: 183: }
+"180
+[; ;newmain.c: 180: }
 [e :UE 154 ]
 }
-"184
-[; ;Brazo.c: 184: void writeEEPROM(uint8_t data, uint8_t address){
+"181
+[; ;newmain.c: 181: void writeEEPROM(uint8_t data, uint8_t address){
 [v _writeEEPROM `(v ~T0 @X0 1 ef2`uc`uc ]
 {
 [e :U _writeEEPROM ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [v _address `uc ~T0 @X0 1 r2 ]
 [f ]
-"186
-[; ;Brazo.c: 186:     EEADR = address;
+"183
+[; ;newmain.c: 183:     EEADR = address;
 [e = _EEADR _address ]
-"187
-[; ;Brazo.c: 187:     EEDAT = data;
+"184
+[; ;newmain.c: 184:     EEDAT = data;
 [e = _EEDAT _data ]
-"189
-[; ;Brazo.c: 189:     EECON1bits.EEPGD = 0;
+"186
+[; ;newmain.c: 186:     EECON1bits.EEPGD = 0;
 [e = . . _EECON1bits 0 5 -> -> 0 `i `uc ]
-"190
-[; ;Brazo.c: 190:     EECON1bits.WREN = 1;
+"187
+[; ;newmain.c: 187:     EECON1bits.WREN = 1;
 [e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
-"192
-[; ;Brazo.c: 192:     INTCONbits.GIE = 0;
+"189
+[; ;newmain.c: 189:     INTCONbits.GIE = 0;
 [e = . . _INTCONbits 0 7 -> -> 0 `i `uc ]
-"194
-[; ;Brazo.c: 194:     EECON2 = 0x55;
+"191
+[; ;newmain.c: 191:     EECON2 = 0x55;
 [e = _EECON2 -> -> 85 `i `uc ]
-"195
-[; ;Brazo.c: 195:     EECON2 = 0xAA;
+"192
+[; ;newmain.c: 192:     EECON2 = 0xAA;
 [e = _EECON2 -> -> 170 `i `uc ]
-"196
-[; ;Brazo.c: 196:     EECON1bits.WR = 1;
+"193
+[; ;newmain.c: 193:     EECON1bits.WR = 1;
 [e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
-"198
-[; ;Brazo.c: 198:     while(!PIR2bits.EEIF);
+"195
+[; ;newmain.c: 195:     while(!PIR2bits.EEIF);
 [e $U 159  ]
 [e :U 160 ]
 [e :U 159 ]
 [e $ ! != -> . . _PIR2bits 0 4 `i -> 0 `i 160  ]
 [e :U 161 ]
-"199
-[; ;Brazo.c: 199:     PIR2bits.EEIF = 0;
+"196
+[; ;newmain.c: 196:     PIR2bits.EEIF = 0;
 [e = . . _PIR2bits 0 4 -> -> 0 `i `uc ]
-"200
-[; ;Brazo.c: 200:     EECON1bits.WREN = 1;
+"197
+[; ;newmain.c: 197:     EECON1bits.WREN = 1;
 [e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
-"201
-[; ;Brazo.c: 201:     INTCONbits.GIE = 1;
+"198
+[; ;newmain.c: 198:     INTCONbits.GIE = 1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"203
-[; ;Brazo.c: 203:     return;
+"200
+[; ;newmain.c: 200:     return;
 [e $UE 158  ]
-"204
-[; ;Brazo.c: 204: }
+"201
+[; ;newmain.c: 201: }
 [e :UE 158 ]
 }
-"205
-[; ;Brazo.c: 205: int8_t readEEPROM(uint8_t address){
+"202
+[; ;newmain.c: 202: int8_t readEEPROM(uint8_t address){
 [v _readEEPROM `(c ~T0 @X0 1 ef1`uc ]
 {
 [e :U _readEEPROM ]
 [v _address `uc ~T0 @X0 1 r1 ]
 [f ]
-"207
-[; ;Brazo.c: 207:     EEADR = address;
+"204
+[; ;newmain.c: 204:     EEADR = address;
 [e = _EEADR _address ]
-"208
-[; ;Brazo.c: 208:     EECON1bits.EEPGD = 0;
+"205
+[; ;newmain.c: 205:     EECON1bits.EEPGD = 0;
 [e = . . _EECON1bits 0 5 -> -> 0 `i `uc ]
-"209
-[; ;Brazo.c: 209:     EECON1bits.RD = 1;
+"206
+[; ;newmain.c: 206:     EECON1bits.RD = 1;
 [e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
-"210
-[; ;Brazo.c: 210:     int8_t data = (int8_t)EEDAT;
+"207
+[; ;newmain.c: 207:     int8_t data = (int8_t)EEDAT;
 [v _data `c ~T0 @X0 1 a ]
 [e = _data -> _EEDAT `c ]
-"212
-[; ;Brazo.c: 212:     return data;
+"209
+[; ;newmain.c: 209:     return data;
 [e ) _data ]
 [e $UE 162  ]
-"213
-[; ;Brazo.c: 213: }
+"210
+[; ;newmain.c: 210: }
 [e :UE 162 ]
 }
